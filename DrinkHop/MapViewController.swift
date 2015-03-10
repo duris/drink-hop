@@ -269,7 +269,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             let mainViewController = segue.destinationViewController as MainViewController
             if self.targetLocationArray.count != 0{
                 mainViewController.targetLocation = self.targetLocationArray.first!
-                println(mainViewController.targetLocation)
             }
         }
     }

@@ -171,7 +171,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         
     @IBAction func close(segue:UIStoryboardSegue){
         if segue.identifier == "closeMap"{
-            println("hello")
+
             let mapView = segue.sourceViewController as MapViewController
             
             mapView.targetLocationArray.removeAll(keepCapacity: false)
