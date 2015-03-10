@@ -89,49 +89,49 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     
     
-    func loadDrinks(){
-        drinksArray.removeAll(keepCapacity: false)
-        var query : PFQuery = PFQuery(className: "Review")
-        query.limit = 100
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                for object in objects{
-                    let drink:PFObject! = object as PFObject
-                    var getLat = drink.objectForKey("lat") as CLLocationDegrees!
-                    var getLon = drink.objectForKey("lon") as CLLocationDegrees!
-    
-                    var cooridinate = CLLocationCoordinate2DMake(getLat, getLon)
-                    var drinkLocation: CLLocation = CLLocation(latitude: cooridinate.latitude, longitude: cooridinate.longitude)
-           
-
-                    self.calDistanceToMyLocation(drinkLocation)
-                    self.calDistanceToMapCamera(drinkLocation)
-                    
-                    let distanceToDrink = self.myDistanceToDrink.first!
-                    let drinkName = drink.objectForKey("drinkName") as String!
-                    let placeName = drink.objectForKey("placeName") as String!
-                    let id = drink.valueForKey("objectId") as String!
-                    let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
-                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, id:id)
-                    if let distanceToMapCamera = self.mapCameraDistanceToDrink.first {
-                        
-
-                        self.drinksArray.append(reviewData as Review)
-                        //println(drink.objectForKey("drinkName"))
-                        
-                        
-                    }
-                }
-                
-            } else {
-                println("error")
-            }
-            
-            self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
-        }
-
-    }
+//    func loadDrinks(){
+//        drinksArray.removeAll(keepCapacity: false)
+//        var query : PFQuery = PFQuery(className: "Review")
+//        query.limit = 100
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]!, error: NSError!) -> Void in
+//            if error == nil {
+//                for object in objects{
+//                    let drink:PFObject! = object as PFObject
+//                    var getLat = drink.objectForKey("lat") as CLLocationDegrees!
+//                    var getLon = drink.objectForKey("lon") as CLLocationDegrees!
+//    
+//                    var cooridinate = CLLocationCoordinate2DMake(getLat, getLon)
+//                    var drinkLocation: CLLocation = CLLocation(latitude: cooridinate.latitude, longitude: cooridinate.longitude)
+//           
+//
+//                    self.calDistanceToMyLocation(drinkLocation)
+//                    self.calDistanceToMapCamera(drinkLocation)
+//                    
+//                    let distanceToDrink = self.myDistanceToDrink.first!
+//                    let drinkName = drink.objectForKey("drinkName") as String!
+//                    let placeName = drink.objectForKey("placeName") as String!
+//                    let id = drink.valueForKey("objectId") as String!
+//                    let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
+//                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, id:id)
+//                    if let distanceToMapCamera = self.mapCameraDistanceToDrink.first {
+//                        
+//
+//                        self.drinksArray.append(reviewData as Review)
+//                        //println(drink.objectForKey("drinkName"))
+//                        
+//                        
+//                    }
+//                }
+//                
+//            } else {
+//                println("error")
+//            }
+//            
+//            self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+//        }
+//
+//    }
     
     override func viewWillDisappear(animated: Bool) {
         self.mainSearchController.searchBar.hidden = true
@@ -206,19 +206,17 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openMap" {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("map") as MapViewController
-            let navCon = UINavigationController(rootViewController: vc)
-            self.presentViewController(navCon, animated: true, completion: nil)
+            
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let vc = storyboard.instantiateViewControllerWithIdentifier("map") as MapViewController
+            let navCon = segue.destinationViewController as UINavigationController
+            let vc = navCon.topViewController as MapViewController
+           // self.presentViewController(navCon, animated: true, completion: nil)
             vc.targetLocationArray.removeAll(keepCapacity: false)
             vc.targetLocationArray.append(self.targetLocation)
             let test = vc.targetLocationArray.first!
-            println("testing")
-            println(test.latitude)
-            println(test.longitude)
-            
-        //  It's right here dude ^
-            
+     
+            //working...
         }
     }
     
@@ -280,24 +278,5 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

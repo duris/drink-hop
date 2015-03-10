@@ -210,6 +210,7 @@
 				0D76F8341A991EA800E0DC3D /* DrinkSelect */,
 				0D76F8331A991E8800E0DC3D /* PlaceSelect */,
 				0D7426B11A97E3F000BFEBA3 /* GoogleData */,
+				0D9838431AA7D3FB00F4F4A7 /* Marker */,
 				0D74268C1A97E23B00BFEBA3 /* Main.storyboard */,
 				0D74268F1A97E23B00BFEBA3 /* Images.xcassets */,
 				0D7426911A97E23B00BFEBA3 /* LaunchScreen.xib */,
@@ -334,7 +335,6 @@
 			children = (
 				0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */,
 				0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */,
-				0D9838431AA7D3FB00F4F4A7 /* Marker */,
 			);
 			name = Map;
 			sourceTree = "<group>";

@@ -250,9 +250,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     override func viewWillAppear(animated: Bool) {
         let test = self.targetLocationArray.count
-        println("View is appearing")
-        println(test)
-        println("View done appearing")
+   
         self.loadDrinks(self.coordinates)
         if targetLocationArray.count != 0 {
             mapView.camera = GMSCameraPosition(target: self.targetLocationArray.first!, zoom: 12, bearing: 0, viewingAngle: 0)
