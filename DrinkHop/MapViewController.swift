@@ -210,6 +210,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
 
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        
         return false
     }
     
@@ -273,24 +274,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         println(test)
         println("View done appearing")
         self.loadDrinks(self.coordinates)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        if self.targetLocationArray.count != 0 {
-            let test = self.targetLocationArray.first!
-            mapView.camera = GMSCameraPosition(target: test, zoom: 12, bearing: 0, viewingAngle: 0)
+        if targetLocationArray.count != 0 {
+            mapView.camera = GMSCameraPosition(target: self.targetLocationArray.first!, zoom: 12, bearing: 0, viewingAngle: 0)
         } else {
-            let myPos = CLLocationCoordinate2DMake(37.7833, -122.4167)
             mapView.camera = GMSCameraPosition(target: self.coordinates, zoom: 12, bearing: 0, viewingAngle: 0)
         }
     }
     
-//    @IBAction func returnToMap(segue:UIStoryboardSegue) {
-//        if segue.identifier == "close"{
-//            let mainView = segue.sourceViewController as MainViewController
-//            println("hey there")
-//        }
-//    }
+    override func viewDidAppear(animated: Bool) {
+     
+    }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "closeMap" {
