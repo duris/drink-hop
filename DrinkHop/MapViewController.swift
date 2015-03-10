@@ -44,7 +44,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.placeholder = "Location"
             controller.searchBar.autocorrectionType = UITextAutocorrectionType.Yes
-            //self.drinkTable.tableHeaderView = controller.searchBar
             let frame = CGRect(x: 0, y: 0, width: 240, height: 48)
             let titleView = UIView(frame: frame)
             controller.searchBar.backgroundImage = UIImage()
@@ -134,15 +133,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                     let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, id:id)
                     
                     //Retrive cooridinates for the drink review and create a place marker if distance to drink review is less than specified distance
-                    
 
                     self.reviewArray.append(reviewData as Review)
                     
-                    
-                        let marker = PlaceMarker(review: reviewData)                        
-                        marker.map = self.mapView
-
-                    
+                    let marker = PlaceMarker(review: reviewData)
+                    marker.map = self.mapView
                 }
             } else {
                 println("error")
@@ -184,26 +179,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
-        
         var latestLocation: AnyObject = locations[locations.count - 1]
         self.locationArray.append(latestLocation)
         let latitude = latestLocation.coordinate.latitude
         let longitude = latestLocation.coordinate.longitude
         self.coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-//        self.targetLocation = CLLocationCoordinate2DMake(self.coordinates.latitude, self.coordinates.longitude)
         
-        
-
-        println("Yo \(targetLocationArray.count)")
-        
-        if targetLocationArray.count != 0 {
-       mapView.camera = GMSCameraPosition(target: self.targetLocationArray.first!, zoom: 12, bearing: 0, viewingAngle: 0)
-        } else {
-            mapView.camera = GMSCameraPosition(target: self.coordinates, zoom: 12, bearing: 0, viewingAngle: 0)
-        }
-
-        //self.mapView.clear()
-        //self.loadDrinks(self.coordinates)
         self.locationManager.stopUpdatingLocation()
         
     }
@@ -215,7 +196,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        // 1
+        
         let googleMarker = mapView.selectedMarker as PlaceMarker
         let tempIndex = googleMarker.review.tempIndex
         self.selectedIndex = tempIndex
@@ -239,7 +220,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func mapView(mapView: GMSMapView!, idleAtCameraPosition position: GMSCameraPosition!) {
-//        self.coordinates = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.removeAll(keepCapacity: false)
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
