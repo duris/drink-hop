@@ -8,11 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		0D7426891A97E23B00BFEBA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7426881A97E23B00BFEBA3 /* AppDelegate.swift */; };
-		0D74268B1A97E23B00BFEBA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74268A1A97E23B00BFEBA3 /* ViewController.swift */; };
 		0D74268E1A97E23B00BFEBA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D74268C1A97E23B00BFEBA3 /* Main.storyboard */; };
 		0D7426901A97E23B00BFEBA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D74268F1A97E23B00BFEBA3 /* Images.xcassets */; };
 		0D7426931A97E23B00BFEBA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7426911A97E23B00BFEBA3 /* LaunchScreen.xib */; };
 		0D74269F1A97E23B00BFEBA3 /* DrinkHopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74269E1A97E23B00BFEBA3 /* DrinkHopTests.swift */; };
+		0D7426AA1A97E31D00BFEBA3 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426A91A97E31D00BFEBA3 /* GoogleMaps.framework */; };
+		0D7426AC1A97E32A00BFEBA3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D7426AB1A97E32A00BFEBA3 /* GoogleMaps.bundle */; };
+		0D7426AE1A97E37200BFEBA3 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7426AD1A97E37200BFEBA3 /* GooglePlace.swift */; };
+		0D7426B01A97E39600BFEBA3 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7426AF1A97E39600BFEBA3 /* GoogleDataProvider.swift */; };
+		0D7426B31A97E42F00BFEBA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426B21A97E42F00BFEBA3 /* AVFoundation.framework */; };
+		0D7426B51A97E43500BFEBA3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426B41A97E43500BFEBA3 /* CoreData.framework */; };
+		0D7426B71A97E43900BFEBA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426B61A97E43900BFEBA3 /* CoreLocation.framework */; };
+		0D7426B91A97E44100BFEBA3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426B81A97E44100BFEBA3 /* CoreText.framework */; };
+		0D7426BB1A97E44700BFEBA3 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426BA1A97E44700BFEBA3 /* GLKit.framework */; };
+		0D7426BD1A97E45100BFEBA3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426BC1A97E45100BFEBA3 /* ImageIO.framework */; };
+		0D7426BF1A97E46000BFEBA3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426BE1A97E46000BFEBA3 /* libc++.dylib */; };
+		0D7426C11A97E46D00BFEBA3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426C01A97E46D00BFEBA3 /* libicucore.dylib */; };
+		0D7426C31A97E47500BFEBA3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426C21A97E47500BFEBA3 /* libz.dylib */; };
+		0D7426C51A97E47C00BFEBA3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426C41A97E47C00BFEBA3 /* OpenGLES.framework */; };
+		0D7426C71A97E48500BFEBA3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426C61A97E48500BFEBA3 /* QuartzCore.framework */; };
+		0D7426C91A97E48E00BFEBA3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7426C81A97E48E00BFEBA3 /* SystemConfiguration.framework */; };
+		0D76F8361A9931C000E0DC3D /* DrinkSelectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8351A9931C000E0DC3D /* DrinkSelectExtensions.swift */; };
+		0D76F8381A9931D500E0DC3D /* DrinkSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8371A9931D500E0DC3D /* DrinkSelectViewController.swift */; };
+		0D76F83A1A99330300E0DC3D /* PlaceSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8391A99330300E0DC3D /* PlaceSelectViewController.swift */; };
+		0D76F83C1A99331100E0DC3D /* PlaceSelectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F83B1A99331100E0DC3D /* PlaceSelectExtensions.swift */; };
+		0D76F83F1A9935DF00E0DC3D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F83E1A9935DF00E0DC3D /* ReviewViewController.swift */; };
+		0D76F8731A9A3E7600E0DC3D /* PlaceSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8721A9A3E7600E0DC3D /* PlaceSelectTableViewCell.swift */; };
+		0D76F8761A9A988500E0DC3D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8751A9A988500E0DC3D /* MainViewController.swift */; };
+		0D76F8781A9A989700E0DC3D /* MainExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8771A9A989700E0DC3D /* MainExtensions.swift */; };
+		0D76F87A1A9AA87A00E0DC3D /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8791A9AA87A00E0DC3D /* Review.swift */; };
+		0D76F87C1A9AB6F400E0DC3D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */; };
+		0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */; };
+		0D7DEA2A1A9B798000E64612 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA291A9B798000E64612 /* PlaceMarker.swift */; };
+		0D7DEA2F1AA6F40C00E64612 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */; };
+		0DA0F9D81AA7D13C00360233 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */; };
+		0DA0F9DA1AA7D22B00360233 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0F9D91AA7D22B00360233 /* MarkerInfoView.swift */; };
+		0DA0F9DC1AA7D2A000360233 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */; };
+		0DD726D91A98E7300036D2E9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726D41A98E7300036D2E9 /* Parse.framework */; };
+		0DD726DA1A98E7300036D2E9 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726D51A98E7300036D2E9 /* ParseCrashReporting.framework */; };
+		0DD726DB1A98E7300036D2E9 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726D61A98E7300036D2E9 /* ParseFacebookUtils.framework */; };
+		0DD726DC1A98E7300036D2E9 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726D71A98E7300036D2E9 /* ParseUI.framework */; };
+		0DD726DE1A98E7510036D2E9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726DD1A98E7510036D2E9 /* AudioToolbox.framework */; };
+		0DD726E01A98E75F0036D2E9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726DF1A98E75F0036D2E9 /* CFNetwork.framework */; };
+		0DD726E21A98E7680036D2E9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726E11A98E7680036D2E9 /* CoreGraphics.framework */; };
+		0DD726E41A98E7760036D2E9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726E31A98E7760036D2E9 /* MobileCoreServices.framework */; };
+		0DD726E61A98E7900036D2E9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726E51A98E7900036D2E9 /* Security.framework */; };
+		0DD726E81A98E79C0036D2E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726E71A98E79C0036D2E9 /* StoreKit.framework */; };
+		0DD726EA1A98E7B10036D2E9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726E91A98E7B10036D2E9 /* libsqlite3.dylib */; };
+		0DD726F01A98E9CB0036D2E9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726EF1A98E9CB0036D2E9 /* FacebookSDK.framework */; };
+		0DD726F21A98E9D80036D2E9 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726F11A98E9D80036D2E9 /* FBAudienceNetwork.framework */; };
+		0DD726FE1A98EAE50036D2E9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726FD1A98EAE50036D2E9 /* Accounts.framework */; };
+		0DD727001A98EAE90036D2E9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726FF1A98EAE90036D2E9 /* Social.framework */; };
+		0DD727021A98EB460036D2E9 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD727011A98EB460036D2E9 /* libstdc++.6.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +76,61 @@
 		0D7426831A97E23B00BFEBA3 /* DrinkHop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkHop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D7426871A97E23B00BFEBA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D7426881A97E23B00BFEBA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D74268A1A97E23B00BFEBA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D74268D1A97E23B00BFEBA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D74268F1A97E23B00BFEBA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0D7426921A97E23B00BFEBA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0D7426981A97E23B00BFEBA3 /* DrinkHopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrinkHopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D74269D1A97E23B00BFEBA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D74269E1A97E23B00BFEBA3 /* DrinkHopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkHopTests.swift; sourceTree = "<group>"; };
+		0D7426A91A97E31D00BFEBA3 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		0D7426AB1A97E32A00BFEBA3 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		0D7426AD1A97E37200BFEBA3 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		0D7426AF1A97E39600BFEBA3 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
+		0D7426B21A97E42F00BFEBA3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0D7426B41A97E43500BFEBA3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0D7426B61A97E43900BFEBA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0D7426B81A97E44100BFEBA3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0D7426BA1A97E44700BFEBA3 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		0D7426BC1A97E45100BFEBA3 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0D7426BE1A97E46000BFEBA3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		0D7426C01A97E46D00BFEBA3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		0D7426C21A97E47500BFEBA3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0D7426C41A97E47C00BFEBA3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		0D7426C61A97E48500BFEBA3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D7426C81A97E48E00BFEBA3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0D7426CA1A97E4E200BFEBA3 /* DrinkHop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrinkHop-Bridging-Header.h"; sourceTree = "<group>"; };
+		0D76F8351A9931C000E0DC3D /* DrinkSelectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkSelectExtensions.swift; sourceTree = "<group>"; };
+		0D76F8371A9931D500E0DC3D /* DrinkSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkSelectViewController.swift; sourceTree = "<group>"; };
+		0D76F8391A99330300E0DC3D /* PlaceSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSelectViewController.swift; sourceTree = "<group>"; };
+		0D76F83B1A99331100E0DC3D /* PlaceSelectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSelectExtensions.swift; sourceTree = "<group>"; };
+		0D76F83E1A9935DF00E0DC3D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		0D76F8721A9A3E7600E0DC3D /* PlaceSelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceSelectTableViewCell.swift; sourceTree = "<group>"; };
+		0D76F8751A9A988500E0DC3D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0D76F8771A9A989700E0DC3D /* MainExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainExtensions.swift; sourceTree = "<group>"; };
+		0D76F8791A9AA87A00E0DC3D /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0D7DEA291A9B798000E64612 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+		0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
+		0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
+		0DA0F9D91AA7D22B00360233 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
+		0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		0DD726D41A98E7300036D2E9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		0DD726D51A98E7300036D2E9 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		0DD726D61A98E7300036D2E9 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		0DD726D71A98E7300036D2E9 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		0DD726DD1A98E7510036D2E9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0DD726DF1A98E75F0036D2E9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0DD726E11A98E7680036D2E9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0DD726E31A98E7760036D2E9 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0DD726E51A98E7900036D2E9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0DD726E71A98E79C0036D2E9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0DD726E91A98E7B10036D2E9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		0DD726EF1A98E9CB0036D2E9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		0DD726F11A98E9D80036D2E9 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
+		0DD726FD1A98EAE50036D2E9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		0DD726FF1A98EAE90036D2E9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0DD727011A98EB460036D2E9 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +138,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD727021A98EB460036D2E9 /* libstdc++.6.dylib in Frameworks */,
+				0DD727001A98EAE90036D2E9 /* Social.framework in Frameworks */,
+				0DD726FE1A98EAE50036D2E9 /* Accounts.framework in Frameworks */,
+				0DD726EA1A98E7B10036D2E9 /* libsqlite3.dylib in Frameworks */,
+				0DD726E81A98E79C0036D2E9 /* StoreKit.framework in Frameworks */,
+				0DD726E61A98E7900036D2E9 /* Security.framework in Frameworks */,
+				0DD726E41A98E7760036D2E9 /* MobileCoreServices.framework in Frameworks */,
+				0DD726E21A98E7680036D2E9 /* CoreGraphics.framework in Frameworks */,
+				0DD726F21A98E9D80036D2E9 /* FBAudienceNetwork.framework in Frameworks */,
+				0DD726E01A98E75F0036D2E9 /* CFNetwork.framework in Frameworks */,
+				0DD726DE1A98E7510036D2E9 /* AudioToolbox.framework in Frameworks */,
+				0DD726DC1A98E7300036D2E9 /* ParseUI.framework in Frameworks */,
+				0D7426C91A97E48E00BFEBA3 /* SystemConfiguration.framework in Frameworks */,
+				0D7426C71A97E48500BFEBA3 /* QuartzCore.framework in Frameworks */,
+				0D7426C51A97E47C00BFEBA3 /* OpenGLES.framework in Frameworks */,
+				0DD726F01A98E9CB0036D2E9 /* FacebookSDK.framework in Frameworks */,
+				0D7426C31A97E47500BFEBA3 /* libz.dylib in Frameworks */,
+				0DD726D91A98E7300036D2E9 /* Parse.framework in Frameworks */,
+				0DD726DB1A98E7300036D2E9 /* ParseFacebookUtils.framework in Frameworks */,
+				0D7426C11A97E46D00BFEBA3 /* libicucore.dylib in Frameworks */,
+				0D7426BF1A97E46000BFEBA3 /* libc++.dylib in Frameworks */,
+				0D7426BD1A97E45100BFEBA3 /* ImageIO.framework in Frameworks */,
+				0D7426BB1A97E44700BFEBA3 /* GLKit.framework in Frameworks */,
+				0D7426B91A97E44100BFEBA3 /* CoreText.framework in Frameworks */,
+				0D7426B71A97E43900BFEBA3 /* CoreLocation.framework in Frameworks */,
+				0D7426B51A97E43500BFEBA3 /* CoreData.framework in Frameworks */,
+				0D7426B31A97E42F00BFEBA3 /* AVFoundation.framework in Frameworks */,
+				0D7426AA1A97E31D00BFEBA3 /* GoogleMaps.framework in Frameworks */,
+				0DD726DA1A98E7300036D2E9 /* ParseCrashReporting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +186,7 @@
 				0D7426851A97E23B00BFEBA3 /* DrinkHop */,
 				0D74269B1A97E23B00BFEBA3 /* DrinkHopTests */,
 				0D7426841A97E23B00BFEBA3 /* Products */,
+				0D7426A81A97E30200BFEBA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +203,18 @@
 			isa = PBXGroup;
 			children = (
 				0D7426881A97E23B00BFEBA3 /* AppDelegate.swift */,
-				0D74268A1A97E23B00BFEBA3 /* ViewController.swift */,
+				0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */,
+				0D7DEA261A9B6DD800E64612 /* Map */,
+				0D76F8741A9A985000E0DC3D /* Main */,
+				0D76F83D1A9935BC00E0DC3D /* Review */,
+				0D76F8341A991EA800E0DC3D /* DrinkSelect */,
+				0D76F8331A991E8800E0DC3D /* PlaceSelect */,
+				0D7426B11A97E3F000BFEBA3 /* GoogleData */,
 				0D74268C1A97E23B00BFEBA3 /* Main.storyboard */,
 				0D74268F1A97E23B00BFEBA3 /* Images.xcassets */,
 				0D7426911A97E23B00BFEBA3 /* LaunchScreen.xib */,
 				0D7426861A97E23B00BFEBA3 /* Supporting Files */,
+				0D7426CA1A97E4E200BFEBA3 /* DrinkHop-Bridging-Header.h */,
 			);
 			path = DrinkHop;
 			sourceTree = "<group>";
@@ -110,6 +242,111 @@
 				0D74269D1A97E23B00BFEBA3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D7426A81A97E30200BFEBA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DD727011A98EB460036D2E9 /* libstdc++.6.dylib */,
+				0DD726FF1A98EAE90036D2E9 /* Social.framework */,
+				0DD726FD1A98EAE50036D2E9 /* Accounts.framework */,
+				0DD726F11A98E9D80036D2E9 /* FBAudienceNetwork.framework */,
+				0DD726EF1A98E9CB0036D2E9 /* FacebookSDK.framework */,
+				0DD726E91A98E7B10036D2E9 /* libsqlite3.dylib */,
+				0DD726E71A98E79C0036D2E9 /* StoreKit.framework */,
+				0DD726E51A98E7900036D2E9 /* Security.framework */,
+				0DD726E31A98E7760036D2E9 /* MobileCoreServices.framework */,
+				0DD726E11A98E7680036D2E9 /* CoreGraphics.framework */,
+				0DD726DF1A98E75F0036D2E9 /* CFNetwork.framework */,
+				0DD726DD1A98E7510036D2E9 /* AudioToolbox.framework */,
+				0DD726D41A98E7300036D2E9 /* Parse.framework */,
+				0DD726D51A98E7300036D2E9 /* ParseCrashReporting.framework */,
+				0DD726D61A98E7300036D2E9 /* ParseFacebookUtils.framework */,
+				0DD726D71A98E7300036D2E9 /* ParseUI.framework */,
+				0D7426C81A97E48E00BFEBA3 /* SystemConfiguration.framework */,
+				0D7426C61A97E48500BFEBA3 /* QuartzCore.framework */,
+				0D7426C41A97E47C00BFEBA3 /* OpenGLES.framework */,
+				0D7426C21A97E47500BFEBA3 /* libz.dylib */,
+				0D7426C01A97E46D00BFEBA3 /* libicucore.dylib */,
+				0D7426BE1A97E46000BFEBA3 /* libc++.dylib */,
+				0D7426BC1A97E45100BFEBA3 /* ImageIO.framework */,
+				0D7426BA1A97E44700BFEBA3 /* GLKit.framework */,
+				0D7426B81A97E44100BFEBA3 /* CoreText.framework */,
+				0D7426B61A97E43900BFEBA3 /* CoreLocation.framework */,
+				0D7426B41A97E43500BFEBA3 /* CoreData.framework */,
+				0D7426B21A97E42F00BFEBA3 /* AVFoundation.framework */,
+				0D7426AB1A97E32A00BFEBA3 /* GoogleMaps.bundle */,
+				0D7426A91A97E31D00BFEBA3 /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			path = DrinkHop;
+			sourceTree = "<group>";
+		};
+		0D7426B11A97E3F000BFEBA3 /* GoogleData */ = {
+			isa = PBXGroup;
+			children = (
+				0D7426AF1A97E39600BFEBA3 /* GoogleDataProvider.swift */,
+				0D7426AD1A97E37200BFEBA3 /* GooglePlace.swift */,
+			);
+			name = GoogleData;
+			sourceTree = "<group>";
+		};
+		0D76F8331A991E8800E0DC3D /* PlaceSelect */ = {
+			isa = PBXGroup;
+			children = (
+				0D76F8391A99330300E0DC3D /* PlaceSelectViewController.swift */,
+				0D76F83B1A99331100E0DC3D /* PlaceSelectExtensions.swift */,
+				0D76F8721A9A3E7600E0DC3D /* PlaceSelectTableViewCell.swift */,
+			);
+			name = PlaceSelect;
+			sourceTree = "<group>";
+		};
+		0D76F8341A991EA800E0DC3D /* DrinkSelect */ = {
+			isa = PBXGroup;
+			children = (
+				0D76F8371A9931D500E0DC3D /* DrinkSelectViewController.swift */,
+				0D76F8351A9931C000E0DC3D /* DrinkSelectExtensions.swift */,
+			);
+			name = DrinkSelect;
+			sourceTree = "<group>";
+		};
+		0D76F83D1A9935BC00E0DC3D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				0D76F83E1A9935DF00E0DC3D /* ReviewViewController.swift */,
+				0D76F8791A9AA87A00E0DC3D /* Review.swift */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
+		0D76F8741A9A985000E0DC3D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0D76F8751A9A988500E0DC3D /* MainViewController.swift */,
+				0D76F8771A9A989700E0DC3D /* MainExtensions.swift */,
+				0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		0D7DEA261A9B6DD800E64612 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */,
+				0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */,
+				0D9838431AA7D3FB00F4F4A7 /* Marker */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		0D9838431AA7D3FB00F4F4A7 /* Marker */ = {
+			isa = PBXGroup;
+			children = (
+				0DA0F9D91AA7D22B00360233 /* MarkerInfoView.swift */,
+				0D7DEA291A9B798000E64612 /* PlaceMarker.swift */,
+				0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */,
+			);
+			name = Marker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +431,9 @@
 			files = (
 				0D74268E1A97E23B00BFEBA3 /* Main.storyboard in Resources */,
 				0D7426931A97E23B00BFEBA3 /* LaunchScreen.xib in Resources */,
+				0DA0F9D81AA7D13C00360233 /* MarkerInfoView.xib in Resources */,
 				0D7426901A97E23B00BFEBA3 /* Images.xcassets in Resources */,
+				0D7426AC1A97E32A00BFEBA3 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +451,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D74268B1A97E23B00BFEBA3 /* ViewController.swift in Sources */,
+				0D7426B01A97E39600BFEBA3 /* GoogleDataProvider.swift in Sources */,
+				0D76F8761A9A988500E0DC3D /* MainViewController.swift in Sources */,
+				0D76F8381A9931D500E0DC3D /* DrinkSelectViewController.swift in Sources */,
+				0D7DEA2A1A9B798000E64612 /* PlaceMarker.swift in Sources */,
+				0D76F83C1A99331100E0DC3D /* PlaceSelectExtensions.swift in Sources */,
+				0D76F8781A9A989700E0DC3D /* MainExtensions.swift in Sources */,
+				0DA0F9DC1AA7D2A000360233 /* UIViewExtension.swift in Sources */,
 				0D7426891A97E23B00BFEBA3 /* AppDelegate.swift in Sources */,
+				0D76F8361A9931C000E0DC3D /* DrinkSelectExtensions.swift in Sources */,
+				0DA0F9DA1AA7D22B00360233 /* MarkerInfoView.swift in Sources */,
+				0D76F8731A9A3E7600E0DC3D /* PlaceSelectTableViewCell.swift in Sources */,
+				0D76F87A1A9AA87A00E0DC3D /* Review.swift in Sources */,
+				0D76F83A1A99330300E0DC3D /* PlaceSelectViewController.swift in Sources */,
+				0D7DEA2F1AA6F40C00E64612 /* MapViewExtensions.swift in Sources */,
+				0D76F87C1A9AB6F400E0DC3D /* MainTableViewCell.swift in Sources */,
+				0D76F83F1A9935DF00E0DC3D /* ReviewViewController.swift in Sources */,
+				0D7426AE1A97E37200BFEBA3 /* GooglePlace.swift in Sources */,
+				0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +547,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,6 +584,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -338,9 +595,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DrinkHop",
+				);
 				INFOPLIST_FILE = DrinkHop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinkHop/DrinkHop-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -348,9 +612,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DrinkHop",
+				);
 				INFOPLIST_FILE = DrinkHop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DrinkHop/DrinkHop-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -407,6 +677,7 @@
 				0D7426A41A97E23B00BFEBA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D7426A51A97E23B00BFEBA3 /* Build configuration list for PBXNativeTarget "DrinkHopTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +686,7 @@
 				0D7426A71A97E23B00BFEBA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
