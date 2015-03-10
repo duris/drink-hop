@@ -208,7 +208,8 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         if segue.identifier == "openMap" {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("map") as MapViewController
-            self.presentViewController(vc, animated: true, completion: nil)
+            let navCon = UINavigationController(rootViewController: vc)
+            self.presentViewController(navCon, animated: true, completion: nil)
             vc.targetLocationArray.removeAll(keepCapacity: false)
             vc.targetLocationArray.append(self.targetLocation)
             let test = vc.targetLocationArray.first!
