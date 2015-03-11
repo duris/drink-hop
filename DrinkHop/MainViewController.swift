@@ -15,6 +15,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     @IBOutlet weak var cameraButton:UIButton!
     @IBOutlet weak var libraryButton:UIButton!
     @IBOutlet weak var drinkTable:UITableView!
+    @IBOutlet weak var mapViewButton:UIBarButtonItem!
     @IBOutlet weak var overlayView:UIView!
     let selectedPhoto = UIImageView()
     let picker = UIImagePickerController()
@@ -44,6 +45,8 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         self.loadDrinks()
+        
+        
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain,
             target: nil, action: nil)
@@ -75,10 +78,16 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
 //        }
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        self.mainSearchController.searchBar.becomeFirstResponder()
-//    }
-//    
+    override func viewDidAppear(animated: Bool) {
+        self.delay(0.172){
+            if self.targetLocation.latitude == 0.00 {
+                self.reverseGeocodeCoordinate(self.myLocation)
+            }else{
+                self.reverseGeocodeCoordinate(self.targetLocation)
+            }
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -151,7 +160,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         println(currentLocation.coordinate.latitude)
         println(currentLocation.coordinate.longitude)
         self.myLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
- 
+       // self.reverseGeocodeCoordinate(self.myLocation)
         self.locationManager.stopUpdatingLocation()
         
     }
@@ -222,9 +231,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             let vc = navCon.topViewController as MapViewController
            // self.presentViewController(navCon, animated: true, completion: nil)
             vc.targetLocationArray.removeAll(keepCapacity: false)
-            vc.targetLocationArray.append(self.targetLocation)
-            let test = vc.targetLocationArray.first!
-     
+            if self.targetLocation.latitude == 0.00{
+                println("hey")
+                vc.targetLocationArray.append(self.myLocation)
+                let test = vc.targetLocationArray.first!
+            } else {
+                vc.targetLocationArray.append(self.targetLocation)
+            }
+
             //working...
         }
     }
@@ -269,6 +283,21 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
+            
+            if let address = response?.firstResult() {
+                let lines = address.lines as [String]
+                var area = lines[1]
+                var city = split(area) {$0 == ","}
+                var state = split(area){$0 == " "}
+                self.mapViewButton.title = "Around \(city.first!), \(state[state.count - 2])"
+            }
+            
+        }
     }
     
     func hideOverlay(){

@@ -369,7 +369,6 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="T3W-ZU-fg5"/>
                                     <barButtonItem title="Map" id="Rtj-Lx-9YX">
                                         <connections>
                                             <segue destination="8xB-le-n6b" kind="presentation" identifier="openMap" modalTransitionStyle="flipHorizontal" id="zpZ-TC-KFV"/>
@@ -381,7 +380,6 @@
                                             <action selector="showPhotoOptions:" destination="GMa-XM-ChD" id="x3c-3U-wWm"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="34C-eM-0eP"/>
                                 </items>
                                 <color key="tintColor" red="0.24796715559999999" green="0.24796715559999999" blue="0.24796715559999999" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -405,6 +403,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="drinkTable" destination="Rgf-rC-fvL" id="jSN-tQ-ACz"/>
+                        <outlet property="mapViewButton" destination="Rtj-Lx-9YX" id="Wvf-BL-BvB"/>
                         <outlet property="overlayView" destination="8Qa-fa-K2O" id="0Oj-mq-SDb"/>
                         <segue destination="Xkv-bx-M16" kind="unwind" identifier="backToMap" unwindAction="returnToMap:" id="EXj-FR-zLK"/>
                     </connections>
