@@ -29,8 +29,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
     var myLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
     var targetLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
-    var currentLocation = [AnyObject]()
-    var reviews =  [Review]()
     var 🍕 = 0.0
     
     
@@ -45,7 +43,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
+        self.loadDrinks()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain,
             target: nil, action: nil)
@@ -89,63 +87,74 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     
     
-//    func loadDrinks(){
-//        drinksArray.removeAll(keepCapacity: false)
-//        var query : PFQuery = PFQuery(className: "Review")
-//        query.limit = 100
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            if error == nil {
-//                for object in objects{
-//                    let drink:PFObject! = object as PFObject
-//                    var getLat = drink.objectForKey("lat") as CLLocationDegrees!
-//                    var getLon = drink.objectForKey("lon") as CLLocationDegrees!
-//    
-//                    var cooridinate = CLLocationCoordinate2DMake(getLat, getLon)
-//                    var drinkLocation: CLLocation = CLLocation(latitude: cooridinate.latitude, longitude: cooridinate.longitude)
-//           
-//
-//                    self.calDistanceToMyLocation(drinkLocation)
-//                    self.calDistanceToMapCamera(drinkLocation)
-//                    
-//                    let distanceToDrink = self.myDistanceToDrink.first!
-//                    let drinkName = drink.objectForKey("drinkName") as String!
-//                    let placeName = drink.objectForKey("placeName") as String!
-//                    let id = drink.valueForKey("objectId") as String!
-//                    let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
-//                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, id:id)
-//                    if let distanceToMapCamera = self.mapCameraDistanceToDrink.first {
-//                        
-//
-//                        self.drinksArray.append(reviewData as Review)
-//                        //println(drink.objectForKey("drinkName"))
-//                        
-//                        
-//                    }
-//                }
-//                
-//            } else {
-//                println("error")
-//            }
-//            
-//            self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
-//        }
-//
-//    }
+    func loadDrinks(){
+        self.drinksArray.removeAll(keepCapacity: false)
+        var query : PFQuery = PFQuery(className: "Review")
+        query.limit = 100
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects{
+                    let drink:PFObject! = object as PFObject
+                    var getLat = drink.objectForKey("lat") as CLLocationDegrees!
+                    var getLon = drink.objectForKey("lon") as CLLocationDegrees!
+    
+                    var cooridinate = CLLocationCoordinate2DMake(getLat, getLon)
+                    var drinkLocation: CLLocation = CLLocation(latitude: cooridinate.latitude, longitude: cooridinate.longitude)
+           
+
+                    self.calDistanceToMyLocation(drinkLocation)
+                    self.calDistanceToMapCamera(drinkLocation)
+                    
+                    let distanceToDrink = self.myDistanceToDrink.first!
+                    let drinkName = drink.objectForKey("drinkName") as String!
+                    let placeName = drink.objectForKey("placeName") as String!
+                    let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
+                    var image = UIImage()
+                    if let imageData = drink.objectForKey("photo") as PFFile! {
+                        imageData.getDataInBackgroundWithBlock({
+                            (data: NSData!, error: NSError!) -> Void in
+                            if (error == nil) {
+                                image = UIImage(data:data)!
+                            }
+                            
+                        })//getDataInBackgroundWithBlock - end
+                    }else {
+                        image = UIImage(named: "drink")!
+                    }
+                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
+                  
+
+                        self.drinksArray.append(reviewData as Review)
+                        //println(drink.objectForKey("drinkName"))
+                    println(self.drinksArray.count)
+                }
+                
+            } else {
+                println("error")
+            }
+            
+            self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+            self.drinkTable.reloadData()
+        }
+
+    }
     
     override func viewWillDisappear(animated: Bool) {
         self.mainSearchController.searchBar.hidden = true
         self.mainSearchController.searchBar.resignFirstResponder()
     }
     
-//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-//        self.locationManager.startUpdatingLocation()
-//        self.loadDrinks()
-//        //self.drinkTable.reloadData()
-// 
-//        self.locationManager.stopUpdatingLocation()
-//        
-//    }
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        self.locationManager.startUpdatingLocation()
+        let currentLocation: AnyObject = locations.first! as AnyObject
+        println(currentLocation.coordinate.latitude)
+        println(currentLocation.coordinate.longitude)
+        self.myLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+ 
+        self.locationManager.stopUpdatingLocation()
+        
+    }
     
     func calDistanceToMyLocation(placeLocation:CLLocation){
         self.myDistanceToDrink.removeAll(keepCapacity: false)

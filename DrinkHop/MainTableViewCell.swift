@@ -13,6 +13,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var drinkNameLabel:UILabel!
     @IBOutlet weak var placeNameLabel:UILabel!
     @IBOutlet weak var distanceLabel:UILabel!
+    @IBOutlet weak var drinkImageView:UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

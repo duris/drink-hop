@@ -14,14 +14,14 @@ class Review {
     var placeName = ""
     var location:CLLocation = CLLocation()
     var tempIndex:NSIndexPath
-    var id:String
+    var image:UIImage
     
-    init(drinkName:String, drinkDistance:Double, placeName:String, reviewLocation:CLLocation, tempIndex:NSIndexPath, id: String){
+    init(drinkName:String, drinkDistance:Double, placeName:String, reviewLocation:CLLocation, tempIndex:NSIndexPath, image: UIImage){
         self.drinkName = drinkName
         self.drinkDistance = drinkDistance
         self.placeName = placeName
         self.location = reviewLocation
         self.tempIndex = tempIndex
-        self.id = id
+        self.image = image
     }
 }

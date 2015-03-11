@@ -13,17 +13,13 @@ extension MainViewController: UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if (self.mainSearchController.active)
-        {
-            if (self.mainSearchController.searchBar.text != "" && self.drinksArray.count == 0){
-                return 1
-            }else {
-                return self.drinksArray.count
-            }
-        } else
-        {
+        
+        if self.drinksArray.count != 0 {
             return self.drinksArray.count
+        } else {
+            return 0
         }
+        
     }
     
     
@@ -32,22 +28,17 @@ extension MainViewController: UITableViewDataSource
         var cell = self.drinkTable.dequeueReusableCellWithIdentifier("Cell") as MainTableViewCell
         
         self.drinksArray.sort({$0.drinkDistance < $1.drinkDistance})
-        if (self.mainSearchController.active)
-        {
+        if self.drinksArray.count != 0 {
             let drink:Review = drinksArray[indexPath.row]
             let miles = String(format:"%.0f", drink.drinkDistance)
             cell.drinkNameLabel.text! = drink.drinkName
             cell.distanceLabel.text! = miles + " mi"
             cell.placeNameLabel.text! = "At " + drink.placeName
+            cell.drinkImageView.image = drink.image
+        }else {
+            println("no data")
         }
-        else
-        {
-            let drink:Review = drinksArray[indexPath.row]
-            let miles = String(format:"%.0f", drink.drinkDistance)
-            cell.drinkNameLabel.text! = drink.drinkName
-            cell.distanceLabel.text! = miles + " mi"
-            cell.placeNameLabel.text! = "At " + drink.placeName
-        }
+ 
         return cell
     }
     

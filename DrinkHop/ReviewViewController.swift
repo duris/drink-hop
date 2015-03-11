@@ -55,6 +55,11 @@ class ReviewViewController: UIViewController {
         review["placeId"] = place.placeId
         review["lat"] = place.coordinate.latitude
         review["lon"] = place.coordinate.longitude
+        let imageData:NSData = UIImageJPEGRepresentation(self.photoImageView.image, 0.9)
+        let imageFile:PFFile = PFFile(data: imageData)
+        review["photo"] = imageFile
+        let point = PFGeoPoint(latitude:place.coordinate.latitude, longitude:place.coordinate.longitude)
+        review["location"] = point
         if newDrinkName != "" {
             let newDrink = PFObject(className: "Drink")
             review["drinkName"] = self.newDrinkName as String!

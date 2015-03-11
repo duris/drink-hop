@@ -27,7 +27,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     var mapSearchController = UISearchController()
     var tempIndexRow = 0
     var selectedIndex = NSIndexPath(forRow: 0, inSection: 0)
-    var tryThis = [CLLocationCoordinate2D]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,9 +128,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                     let distanceToDrink = self.distanceToReview.first!
                     let drinkName = review.objectForKey("drinkName") as String!
                     let placeName = review.objectForKey("placeName") as String!
-                    let id = review.valueForKey("objectId") as String!
+                    var drinkImage = UIImage()
+                    if let imageFile = review.objectForKey("photo") as PFFile! {
+                        imageFile.getDataInBackgroundWithBlock({
+                            (imageData: NSData!, error: NSError!) -> Void in
+                            if (error == nil) {
+                                println("should set drinkImage")
+                                drinkImage = UIImage(data:imageData)!
+                                println(drinkImage)
+                            }
+                            
+                        })//getDataInBackgroundWithBlock - end
+                    }else {
+                        drinkImage = UIImage(named: "drink")!
+                    }
                     let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
-                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, id:id)
+                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
                     
                     //Retrive cooridinates for the drink review and create a place marker if distance to drink review is less than specified distance
 
@@ -144,7 +157,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             }
             self.reviewArray.sort({$0.drinkDistance > $1.drinkDistance})
             self.searchDisplayController?.searchResultsTableView.reloadData()
-            self.tempIndexRow = self.reviewArray.count + 2
+            self.tempIndexRow = self.reviewArray.count + 1
             for review in self.reviewArray {
                 review.tempIndex = NSIndexPath(forRow: self.tempIndexRow, inSection: 0)
                 self.tempIndexRow = self.tempIndexRow - 1
