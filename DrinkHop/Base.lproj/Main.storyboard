@@ -175,21 +175,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buL-eK-Z9X">
-                                <rect key="frame" x="117" y="563" width="141" height="40"/>
-                                <color key="backgroundColor" red="0.11705160542072485" green="0.15204744176359483" blue="0.62830748179999996" alpha="0.22" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Submit Review">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitReview" destination="KMq-fM-X8q" eventType="touchUpInside" id="eLy-pd-uHe"/>
-                                    <segue destination="jpc-lZ-RNQ" kind="popoverPresentation" identifier="saveReview" popoverAnchorView="buL-eK-Z9X" id="yiC-mp-TMM">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3y-mD-CoL">
                                 <rect key="frame" x="16" y="213" width="185" height="26"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
@@ -244,6 +229,17 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4iS-4E-xyZ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jMg-ag-2wQ"/>
+                                    <barButtonItem title="Submit Review" id="RfW-eQ-sK8">
+                                        <connections>
+                                            <segue destination="jpc-lZ-RNQ" kind="showDetail" identifier="submitReview" id="O3j-Lw-BBR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -409,7 +405,13 @@
                             <constraint firstItem="8Qa-fa-K2O" firstAttribute="top" secondItem="sDP-lP-AUl" secondAttribute="bottom" id="yjr-Mm-Nuf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="DrinkStir" id="gj5-tB-Vuc"/>
+                    <navigationItem key="navigationItem" title="DrinkStir" id="gj5-tB-Vuc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="B78-Q5-CW1">
+                            <connections>
+                                <action selector="refreshTable" destination="GMa-XM-ChD" id="A3s-7q-tUo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="drinkTable" destination="Rgf-rC-fvL" id="jSN-tQ-ACz"/>

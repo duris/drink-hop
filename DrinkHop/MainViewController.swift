@@ -45,7 +45,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         self.loadDrinks()
         
         
-        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain,
             target: nil, action: nil)
         
@@ -74,6 +73,10 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
 //        if self.selectedIndex != NSIndexPath(forRow: 0, inSection: 0) {
 //            self.drinkTable.scrollToRowAtIndexPath(self.selectedIndex, atScrollPosition: UITableViewScrollPosition.None, animated: false)
 //        }
+    }
+    
+    @IBAction func refreshTable(){
+        self.loadDrinks()
     }
     
     override func viewDidAppear(animated: Bool) {

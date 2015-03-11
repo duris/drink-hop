@@ -46,48 +46,46 @@ class ReviewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     
-    @IBAction func submitReview(){
-        let reviewText = self.thoughtsTextView.text
-        let place = placeArray.first! as GooglePlace
-        var review = PFObject(className:"Review")
-        review["placeName"] = place.name
-        review["placeId"] = place.placeId
-        review["lat"] = place.coordinate.latitude
-        review["lon"] = place.coordinate.longitude
-        let imageData:NSData = UIImageJPEGRepresentation(self.photoImageView.image, 0.9)
-        let imageFile:PFFile = PFFile(data: imageData)
-        review["photo"] = imageFile
-        let point = PFGeoPoint(latitude:place.coordinate.latitude, longitude:place.coordinate.longitude)
-        review["location"] = point
-        if newDrinkName != "" {
-            let newDrink = PFObject(className: "Drink")
-            review["drinkName"] = self.newDrinkName as String!
-            newDrink["name"] = self.newDrinkName as String!
-            newDrink.save()
-        } else {
-            let drink = drinkArray.first! as PFObject!
-            review["drinkName"] = drink.objectForKey("name") as String!
-            println(drink.objectForKey("objectId"))
-        }
-        review.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError!) -> Void in
-            if (success) {
-                // The object has been saved.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "submitReview" {
+            let reviewText = self.thoughtsTextView.text
+            let place = placeArray.first! as GooglePlace
+            var review = PFObject(className:"Review")
+            review["placeName"] = place.name
+            review["placeId"] = place.placeId
+            review["lat"] = place.coordinate.latitude
+            review["lon"] = place.coordinate.longitude
+            let imageData:NSData = UIImageJPEGRepresentation(self.photoImageView.image, 0.9)
+            let imageFile:PFFile = PFFile(data: imageData)
+            review["photo"] = imageFile
+            let point = PFGeoPoint(latitude:place.coordinate.latitude, longitude:place.coordinate.longitude)
+            review["location"] = point
+            if newDrinkName != "" {
+                let newDrink = PFObject(className: "Drink")
+                review["drinkName"] = self.newDrinkName as String!
+                newDrink["name"] = self.newDrinkName as String!
+                newDrink.save()
             } else {
-                // There was a problem, check error.description
+                let drink = drinkArray.first! as PFObject!
+                review["drinkName"] = drink.objectForKey("name") as String!
+                println(drink.objectForKey("objectId"))
             }
+            review.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError!) -> Void in
+                if (success) {
+                    // The object has been saved.
+                } else {
+                    // There was a problem, check error.description
+                }
+            }
+            
         }
-        self.navigationController?.popViewControllerAnimated(true)
-        //dismissViewControllerAnimated(true, completion: nil)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("main") as MainViewController
-        let navCon = UINavigationController(rootViewController: vc)
-        presentViewController(navCon, animated: false, completion: nil)
-        
     }
-  
+    
+    
+    
     
     
     @IBAction func cancelReview(segue:UIStoryboardSegue){
