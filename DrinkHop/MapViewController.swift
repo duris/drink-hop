@@ -127,29 +127,28 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                     let distanceToDrink = self.distanceToReview.first!
                     let drinkName = review.objectForKey("drinkName") as String!
                     let placeName = review.objectForKey("placeName") as String!
-                    var drinkImage = UIImage()
                     if let imageFile = review.objectForKey("photo") as PFFile! {
                         imageFile.getDataInBackgroundWithBlock({
                             (imageData: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
-                                println("should set drinkImage")
-                                drinkImage = UIImage(data:imageData)!
-                                println(drinkImage)
+                                let drinkImage = UIImage(data:imageData)!
+                                let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
+                                self.reviewArray.append(reviewData as Review)
+                                let marker = PlaceMarker(review: reviewData)
+                                marker.map = self.mapView
                             }
                             
                         })//getDataInBackgroundWithBlock - end
                     }else {
-                        drinkImage = UIImage(named: "drink")!
+                        let drinkImage = UIImage(named: "drink")!
+                        let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
+                        self.reviewArray.append(reviewData as Review)
+                        let marker = PlaceMarker(review: reviewData)
+                        marker.map = self.mapView
                     }
-                    let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
-                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
                     
-                    //Retrive cooridinates for the drink review and create a place marker if distance to drink review is less than specified distance
-
-                    self.reviewArray.append(reviewData as Review)
-                    
-                    let marker = PlaceMarker(review: reviewData)
-                    marker.map = self.mapView
                 }
             } else {
                 println("error")
@@ -235,8 +234,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.targetLocationArray.removeAll(keepCapacity: false)
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
-        println(target.latitude)
-        println(target.longitude)
+  
     }
     
     var mapRadius: Double {

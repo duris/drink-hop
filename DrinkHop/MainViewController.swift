@@ -120,34 +120,40 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                     let drinkName = drink.objectForKey("drinkName") as String!
                     let placeName = drink.objectForKey("placeName") as String!
                     let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
-                    var image = UIImage()
                     if let imageData = drink.objectForKey("photo") as PFFile! {
                         imageData.getDataInBackgroundWithBlock({
                             (data: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
-                                image = UIImage(data:data)!
+                                let image = UIImage(data:data)!
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
+                                
+                                
+                                self.drinksArray.append(reviewData as Review)
+                                self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+                                self.drinkTable.reloadData()
                             }
                             
                         })//getDataInBackgroundWithBlock - end
                     }else {
-                        image = UIImage(named: "drink")!
-                    }
-                    let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
-                  
-
+                        let image = UIImage(named: "drink")!
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
+                        
+                        
                         self.drinksArray.append(reviewData as Review)
-                        //println(drink.objectForKey("drinkName"))
-                    println(self.drinksArray.count)
+                        self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+                        self.drinkTable.reloadData()
+                    }
+          
                 }
                 
             } else {
                 println("error")
             }
             
-            self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
             
             
-            self.drinkTable.reloadData()
+            
+            
         }
 
     }
@@ -200,17 +206,10 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             let target = mapView.targetLocationArray.first!
             self.targetLocation.latitude = target.latitude
             self.targetLocation.longitude = target.longitude
-            
-            println(self.drinksArray.count)
-          
-            //self.drinkTable.reloadData()
-            self.searchDisplayController?.searchResultsTableView.reloadData()
 
-            println(self.drinksArray.count)
             delay(1){
                 if mapView.selectedIndex != NSIndexPath(forRow: 0, inSection: 0) {
                     self.selectedIndex = mapView.selectedIndex
-                    println(self.selectedIndex)
                     self.drinkTable.scrollToRowAtIndexPath(mapView.selectedIndex, atScrollPosition: .Middle, animated: true)
                 }
             }
@@ -222,34 +221,27 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openMap" {
             
-            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //let vc = storyboard.instantiateViewControllerWithIdentifier("map") as MapViewController
+
             let navCon = segue.destinationViewController as UINavigationController
             let vc = navCon.topViewController as MapViewController
-           // self.presentViewController(navCon, animated: true, completion: nil)
+
             vc.targetLocationArray.removeAll(keepCapacity: false)
-            if self.targetLocation.latitude == 0.00{
-                
+            
+            if self.targetLocation.latitude == 0.00{                
                 vc.targetLocationArray.append(self.myLocation)
                 let test = vc.targetLocationArray.first!
             } else {
                 vc.targetLocationArray.append(self.targetLocation)
             }
+            
             if drinksArray.count != 0 {
-                println("hey")
                 vc.tempIndexRow = vc.reviewArray.count + 1
                 for review in drinksArray {
                     vc.tempIndexRow = vc.tempIndexRow + 1
                     vc.reviewArray.append(review)
                     review.tempIndex = NSIndexPath(forRow: vc.tempIndexRow, inSection: 0)
-                    
                 }
-                
-                
             }
-            
-
-            //working...
         }
     }
     

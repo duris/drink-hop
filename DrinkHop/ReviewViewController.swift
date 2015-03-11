@@ -80,6 +80,7 @@ class ReviewViewController: UIViewController {
                     // There was a problem, check error.description
                 }
             }
+            self.navigationController?.popToRootViewControllerAnimated(false)
             
         }
     }

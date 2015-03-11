@@ -254,7 +254,7 @@
             </objects>
             <point key="canvasLocation" x="952.5" y="-799.5"/>
         </scene>
-        <!--DrinkStir-->
+        <!--Main View Controller-->
         <scene sceneID="9Qc-fe-yfg">
             <objects>
                 <viewController storyboardIdentifier="main" id="GMa-XM-ChD" customClass="MainViewController" customModule="DrinkHop" customModuleProvider="target" sceneMemberID="viewController">
@@ -296,14 +296,14 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="klz-d8-gBv">
-                                                    <rect key="frame" x="92" y="20" width="23" height="23.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="23" id="rq8-3d-pRA"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y24-u5-D5m">
                                                     <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="klz-d8-gBv">
+                                                    <rect key="frame" x="88" y="14" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="rq8-3d-pRA"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -315,12 +315,12 @@
                                                 <constraint firstItem="KgO-ad-f9F" firstAttribute="centerX" secondItem="klz-d8-gBv" secondAttribute="centerX" id="akA-Wq-CAo"/>
                                                 <constraint firstItem="KgO-ad-f9F" firstAttribute="leading" secondItem="JT0-16-CXv" secondAttribute="leadingMargin" constant="70" id="alP-k0-eHP"/>
                                                 <constraint firstItem="pel-y5-G6P" firstAttribute="bottom" secondItem="KgO-ad-f9F" secondAttribute="bottom" id="bDj-jF-Crw"/>
-                                                <constraint firstItem="klz-d8-gBv" firstAttribute="top" secondItem="IBl-T0-pgn" secondAttribute="top" id="f5I-P3-p1m"/>
-                                                <constraint firstItem="klz-d8-gBv" firstAttribute="top" secondItem="JT0-16-CXv" secondAttribute="topMargin" constant="12" id="jEN-yd-zvE"/>
-                                                <constraint firstItem="KgO-ad-f9F" firstAttribute="top" secondItem="klz-d8-gBv" secondAttribute="bottom" id="rQT-hR-fcN"/>
+                                                <constraint firstItem="klz-d8-gBv" firstAttribute="top" secondItem="IBl-T0-pgn" secondAttribute="top" constant="-6" id="f5I-P3-p1m"/>
+                                                <constraint firstItem="klz-d8-gBv" firstAttribute="top" secondItem="JT0-16-CXv" secondAttribute="topMargin" constant="6" id="jEN-yd-zvE"/>
+                                                <constraint firstItem="KgO-ad-f9F" firstAttribute="top" secondItem="klz-d8-gBv" secondAttribute="bottom" constant="-1" id="rQT-hR-fcN"/>
                                                 <constraint firstItem="pel-y5-G6P" firstAttribute="leading" secondItem="KgO-ad-f9F" secondAttribute="trailing" constant="5" id="vQC-HO-sdP"/>
                                                 <constraint firstItem="pel-y5-G6P" firstAttribute="centerY" secondItem="KgO-ad-f9F" secondAttribute="centerY" id="xkI-7B-pZf"/>
-                                                <constraint firstItem="IBl-T0-pgn" firstAttribute="leading" secondItem="klz-d8-gBv" secondAttribute="trailing" constant="18" id="yDa-Ns-9KY"/>
+                                                <constraint firstItem="IBl-T0-pgn" firstAttribute="leading" secondItem="klz-d8-gBv" secondAttribute="trailing" constant="15" id="yDa-Ns-9KY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -332,7 +332,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-fa-K2O">
+                            <view hidden="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-fa-K2O">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiG-0X-vQE">
@@ -372,10 +372,10 @@
                                 <items>
                                     <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="lRL-6M-Gue"/>
                                     <barButtonItem image="mapIcon-1" id="ahM-p2-5zT">
-                                        <color key="tintColor" red="0.0" green="0.47219725429999998" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </barButtonItem>
                                     <barButtonItem title="Map" id="Rtj-Lx-9YX">
-                                        <color key="tintColor" red="0.0" green="0.47219725434514165" blue="0.99786343232044195" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="8xB-le-n6b" kind="presentation" identifier="openMap" modalTransitionStyle="flipHorizontal" id="zpZ-TC-KFV"/>
                                         </connections>
@@ -387,7 +387,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" red="0.0" green="0.47219725429999998" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.21979537508452368" green="0.69004645423761413" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,8 +405,9 @@
                             <constraint firstItem="8Qa-fa-K2O" firstAttribute="top" secondItem="sDP-lP-AUl" secondAttribute="bottom" id="yjr-Mm-Nuf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="DrinkStir" id="gj5-tB-Vuc">
+                    <navigationItem key="navigationItem" id="gj5-tB-Vuc">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="B78-Q5-CW1">
+                            <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="refreshTable" destination="GMa-XM-ChD" id="A3s-7q-tUo"/>
                             </connections>
@@ -423,7 +424,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEh-6y-XuM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Xkv-bx-M16" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1599.5" y="67.5"/>
+            <point key="canvasLocation" x="1599.5" y="66.5"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Elq-ny-Hso">
@@ -472,11 +473,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rwx-wr-t5L">
                         <barButtonItem key="leftBarButtonItem" title="List" id="zcm-JG-hKo">
+                            <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="YUy-fz-GpQ" kind="unwind" identifier="closeMap" unwindAction="close:" id="tAm-yN-w0e"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Fn1-mH-IUD">
+                            <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="refreshPlaces:" destination="nKG-rr-3uF" id="ehe-DU-UaP"/>
                             </connections>
@@ -551,7 +554,7 @@
     <resources>
         <image name="4.5Star" width="1600" height="373"/>
         <image name="mapIcon-1" width="39" height="39"/>
-        <image name="pin" width="512" height="512"/>
+        <image name="pin" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dN6-iY-98v"/>
