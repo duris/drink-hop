@@ -22,8 +22,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     var mainSearchController = UISearchController()
     var drinksArray = [Review]()
     let locationManager = CLLocationManager()
-    var latitude:CLLocationDegrees = CLLocationDegrees()
-    var longitude:CLLocationDegrees = CLLocationDegrees()
     var myDistanceToDrink = [Double]()
     var selectedIndex = NSIndexPath(forRow: 0, inSection: 0)
     var mapCameraDistanceToDrink = [Double]()
@@ -144,6 +142,8 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             }
             
             self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+            
+            
             self.drinkTable.reloadData()
         }
 
@@ -200,20 +200,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             
             println(self.drinksArray.count)
           
-            self.drinksArray.removeAll(keepCapacity: false)
-            
-            for review in mapView.reviewArray {
-                self.drinksArray.append(review)
-                //To do:
-                //Create a new array for the drinks from the mapView that only updates if the map updated.                
-            }
-            self.drinkTable.reloadData()
+            //self.drinkTable.reloadData()
             self.searchDisplayController?.searchResultsTableView.reloadData()
 
             println(self.drinksArray.count)
             delay(1){
                 if mapView.selectedIndex != NSIndexPath(forRow: 0, inSection: 0) {
                     self.selectedIndex = mapView.selectedIndex
+                    println(self.selectedIndex)
                     self.drinkTable.scrollToRowAtIndexPath(mapView.selectedIndex, atScrollPosition: .Middle, animated: true)
                 }
             }
@@ -232,12 +226,25 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
            // self.presentViewController(navCon, animated: true, completion: nil)
             vc.targetLocationArray.removeAll(keepCapacity: false)
             if self.targetLocation.latitude == 0.00{
-                println("hey")
+                
                 vc.targetLocationArray.append(self.myLocation)
                 let test = vc.targetLocationArray.first!
             } else {
                 vc.targetLocationArray.append(self.targetLocation)
             }
+            if drinksArray.count != 0 {
+                println("hey")
+                vc.tempIndexRow = vc.reviewArray.count + 1
+                for review in drinksArray {
+                    vc.tempIndexRow = vc.tempIndexRow + 1
+                    vc.reviewArray.append(review)
+                    review.tempIndex = NSIndexPath(forRow: vc.tempIndexRow, inSection: 0)
+                    
+                }
+                
+                
+            }
+            
 
             //working...
         }
@@ -294,7 +301,8 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                 var area = lines[1]
                 var city = split(area) {$0 == ","}
                 var state = split(area){$0 == " "}
-                self.mapViewButton.title = "Around \(city.first!), \(state[state.count - 2])"
+                let stateAbbr = state[state.count - 2]
+                self.mapViewButton.title = "\(city.first!)"
             }
             
         }

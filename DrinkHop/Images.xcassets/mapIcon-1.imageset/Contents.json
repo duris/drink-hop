@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "drink.png"
+      "filename" : "mapIcon-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "drink-1.png"
+      "filename" : "mapIcon-1-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "drink-1-1.png"
+      "filename" : "mapIcon-1-1-1.png"
     }
   ],
   "info" : {

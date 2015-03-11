@@ -2,18 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "drink.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "drink-1.png"
+      "filename" : "map-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "drink-1-1.png"
+      "filename" : "map-1-1.png"
     }
   ],
   "info" : {

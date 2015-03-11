@@ -185,7 +185,9 @@
                                 </state>
                                 <connections>
                                     <action selector="submitReview" destination="KMq-fM-X8q" eventType="touchUpInside" id="eLy-pd-uHe"/>
-                                    <segue destination="jpc-lZ-RNQ" kind="showDetail" id="lcu-OV-aLj"/>
+                                    <segue destination="jpc-lZ-RNQ" kind="popoverPresentation" identifier="saveReview" popoverAnchorView="buL-eK-Z9X" id="yiC-mp-TMM">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3y-mD-CoL">
@@ -256,7 +258,7 @@
             </objects>
             <point key="canvasLocation" x="952.5" y="-799.5"/>
         </scene>
-        <!--DrinkHop-->
+        <!--DrinkStir-->
         <scene sceneID="9Qc-fe-yfg">
             <objects>
                 <viewController storyboardIdentifier="main" id="GMa-XM-ChD" customClass="MainViewController" customModule="DrinkHop" customModuleProvider="target" sceneMemberID="viewController">
@@ -334,11 +336,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-fa-K2O">
-                                <rect key="frame" x="0.0" y="174" width="375" height="449"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-fa-K2O">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kiG-0X-vQE">
-                                        <rect key="frame" x="0.0" y="385" width="375" height="64"/>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiG-0X-vQE">
+                                        <rect key="frame" x="0.0" y="495" width="375" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="qgw-4b-Fxi"/>
                                         </constraints>
@@ -365,11 +367,19 @@
                                     <constraint firstAttribute="trailing" secondItem="kiG-0X-vQE" secondAttribute="trailing" id="vPO-CD-oV6"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-mA-HuD">
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-mA-HuD">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="W0S-8o-PWC"/>
+                                </constraints>
                                 <items>
+                                    <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="lRL-6M-Gue"/>
+                                    <barButtonItem image="mapIcon-1" id="ahM-p2-5zT">
+                                        <color key="tintColor" red="0.0" green="0.47219725429999998" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
                                     <barButtonItem title="Map" id="Rtj-Lx-9YX">
+                                        <color key="tintColor" red="0.0" green="0.47219725434514165" blue="0.99786343232044195" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="8xB-le-n6b" kind="presentation" identifier="openMap" modalTransitionStyle="flipHorizontal" id="zpZ-TC-KFV"/>
                                         </connections>
@@ -381,7 +391,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" red="0.24796715559999999" green="0.24796715559999999" blue="0.24796715559999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.47219725429999998" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -399,7 +409,7 @@
                             <constraint firstItem="8Qa-fa-K2O" firstAttribute="top" secondItem="sDP-lP-AUl" secondAttribute="bottom" id="yjr-Mm-Nuf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="DrinkHop" id="gj5-tB-Vuc"/>
+                    <navigationItem key="navigationItem" title="DrinkStir" id="gj5-tB-Vuc"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="drinkTable" destination="Rgf-rC-fvL" id="jSN-tQ-ACz"/>
@@ -538,6 +548,7 @@
     </scenes>
     <resources>
         <image name="4.5Star" width="1600" height="373"/>
+        <image name="mapIcon-1" width="39" height="39"/>
         <image name="pin" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>

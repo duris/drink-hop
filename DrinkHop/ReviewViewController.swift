@@ -70,13 +70,21 @@ class ReviewViewController: UIViewController {
             review["drinkName"] = drink.objectForKey("name") as String!
             println(drink.objectForKey("objectId"))
         }
-        review.save()
+        review.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError!) -> Void in
+            if (success) {
+                // The object has been saved.
+            } else {
+                // There was a problem, check error.description
+            }
+        }
         self.navigationController?.popViewControllerAnimated(true)
         //dismissViewControllerAnimated(true, completion: nil)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("main") as MainViewController
-        presentViewController(vc, animated: false, completion: nil)
+        let navCon = UINavigationController(rootViewController: vc)
+        presentViewController(navCon, animated: false, completion: nil)
         
     }
   

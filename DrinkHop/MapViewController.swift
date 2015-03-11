@@ -88,7 +88,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
- 
+
         loadDrinks(mapView.camera.target)
     }
     
@@ -104,14 +104,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func loadDrinks(coordinate: CLLocationCoordinate2D){
-        
+        self.reviewArray.removeAll(keepCapacity: false)
         var query : PFQuery = PFQuery(className: "Review")
         query.limit = 100
         query.orderByAscending("createdAt")
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
-                self.reviewArray.removeAll(keepCapacity: false)
                 for object in objects{
                     let review:PFObject! = object as PFObject
                     
@@ -262,9 +261,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        if self.reviewArray.count != 0 {
+            for review in reviewArray{
+                let marker = PlaceMarker(review: review)
+                marker.map = self.mapView
+            }
+        }
+        
+        
         let test = self.targetLocationArray.count
    
-        self.loadDrinks(self.coordinates)
+        //self.loadDrinks(self.coordinates)
         if targetLocationArray.count != 0 {
             mapView.camera = GMSCameraPosition(target: self.targetLocationArray.first!, zoom: 12, bearing: 0, viewingAngle: 0)
         } else {
@@ -279,10 +287,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "closeMap" {
-            let mainViewController = segue.destinationViewController as MainViewController
+        
+            let vc = segue.destinationViewController as MainViewController
+            //let vc = navCon.topViewController as MainViewController
+            
             if self.targetLocationArray.count != 0{
-                mainViewController.targetLocation = self.targetLocationArray.first!
+                vc.targetLocation = self.targetLocationArray.first!
             }
+            if reviewArray.count != 0 {
+                vc.drinksArray.removeAll(keepCapacity: false)
+                for review in self.reviewArray {
+                    vc.drinksArray.append(review)
+                }
+                vc.drinkTable.reloadData()
+            }
+
         }
     }
 
