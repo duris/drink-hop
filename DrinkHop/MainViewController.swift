@@ -42,8 +42,9 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        delay(1){
         self.loadDrinks()
-        
+        }
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain,
             target: nil, action: nil)
@@ -80,7 +81,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.delay(0.172){
+        self.delay(0.1){
             if self.targetLocation.latitude == 0.00 {
                 self.reverseGeocodeCoordinate(self.myLocation)
             }else{
@@ -100,21 +101,29 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     func loadDrinks(){
         self.drinksArray.removeAll(keepCapacity: false)
         var query : PFQuery = PFQuery(className: "Review")
-        query.limit = 100
+        query.limit = 50
+        var userGeoPoint : PFGeoPoint = PFGeoPoint()
+        if self.targetLocation.latitude != 0.00{
+          userGeoPoint = PFGeoPoint(latitude: self.targetLocation.latitude, longitude: self.targetLocation.longitude)
+        }else{
+            userGeoPoint = PFGeoPoint(latitude: self.myLocation.latitude, longitude: self.myLocation.longitude)
+        }
+        query.whereKey("location", nearGeoPoint: userGeoPoint, withinMiles: 20)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 for object in objects{
                     let drink:PFObject! = object as PFObject
-                    var getLat = drink.objectForKey("lat") as CLLocationDegrees!
-                    var getLon = drink.objectForKey("lon") as CLLocationDegrees!
-    
-                    var cooridinate = CLLocationCoordinate2DMake(getLat, getLon)
-                    var drinkLocation: CLLocation = CLLocation(latitude: cooridinate.latitude, longitude: cooridinate.longitude)
+        
+                    let location = drink.objectForKey("location") as PFGeoPoint!
+   
+                    var drinkLocation: CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
            
 
                     self.calDistanceToMyLocation(drinkLocation)
-                    self.calDistanceToMapCamera(drinkLocation)
+                    //self.calDistanceToMapCamera(drinkLocation)
+                    
+                    
                     
                     let distanceToDrink = self.myDistanceToDrink.first!
                     let drinkName = drink.objectForKey("drinkName") as String!
@@ -125,7 +134,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                             (data: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
                                 let image = UIImage(data:data)!
-                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
                                 
                                 
                                 self.drinksArray.append(reviewData as Review)
@@ -136,11 +145,11 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                         })//getDataInBackgroundWithBlock - end
                     }else {
                         let image = UIImage(named: "drink")!
-                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, reviewLocation: drinkLocation,tempIndex:tempIndex, image:image)
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
                         
                         
                         self.drinksArray.append(reviewData as Review)
-                        self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+                        //self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
                         self.drinkTable.reloadData()
                     }
           

@@ -86,10 +86,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     @IBAction func refreshPlaces(sender: AnyObject) {
         self.mapView.clear()
         
+        self.targetLocationArray.removeAll(keepCapacity: false)
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
 
-        loadDrinks(mapView.camera.target)
+        loadDrinks(targetLocationArray.first!)
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -106,60 +107,61 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func loadDrinks(coordinate: CLLocationCoordinate2D){
         self.reviewArray.removeAll(keepCapacity: false)
         var query : PFQuery = PFQuery(className: "Review")
-        query.limit = 100
-        query.orderByAscending("createdAt")
+        query.limit = 50
+        var userGeoPoint :PFGeoPoint = PFGeoPoint(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
+        query.whereKey("location", nearGeoPoint: userGeoPoint, withinMiles: 20)
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
                 for object in objects{
                     let review:PFObject! = object as PFObject
                     
-                    var getLat = review.objectForKey("lat") as Double!
-                    var getLon = review.objectForKey("lon") as Double!
-                    
-                    //Create Location object from review coordinates
-                    var reviewCooridinate = CLLocationCoordinate2DMake(getLat, getLon)
-                    var drinkLocation: CLLocation = CLLocation(latitude: reviewCooridinate.latitude, longitude: reviewCooridinate.longitude)
-                    
+//                    var getLat = review.objectForKey("lat") as Double!
+//                    var getLon = review.objectForKey("lon") as Double!
+//                    
+//                    //Create Location object from review coordinates
+//                    var reviewCooridinate = CLLocationCoordinate2DMake(getLat, getLon)
+                    let location = review.objectForKey("location") as PFGeoPoint!
+                    var drinkLocation: CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+//                    
                     self.calDistance(drinkLocation)
                     
-                    let distanceFromCameraToDrink = self.drinkDistances.first!
+                    //let distanceFromCameraToDrink = self.drinkDistances.first!
                     let distanceToDrink = self.distanceToReview.first!
                     let drinkName = review.objectForKey("drinkName") as String!
                     let placeName = review.objectForKey("placeName") as String!
+
                     if let imageFile = review.objectForKey("photo") as PFFile! {
                         imageFile.getDataInBackgroundWithBlock({
                             (imageData: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
-                                let drinkImage = UIImage(data:imageData)!
+                                let image = UIImage(data:imageData)!
                                 let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
-                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
+                                   let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
                                 self.reviewArray.append(reviewData as Review)
                                 let marker = PlaceMarker(review: reviewData)
                                 marker.map = self.mapView
+                                println(self.reviewArray.count)
+                                
+                                self.reviewArray.sort({$0.drinkDistance > $1.drinkDistance})
+                                self.searchDisplayController?.searchResultsTableView.reloadData()
+                                self.tempIndexRow = self.reviewArray.count + 1
+                                for review in self.reviewArray {
+                                    review.tempIndex = NSIndexPath(forRow: self.tempIndexRow, inSection: 0)
+                                    self.tempIndexRow = self.tempIndexRow - 1
+                                }
                             }
                             
                         })//getDataInBackgroundWithBlock - end
                     }else {
-                        let drinkImage = UIImage(named: "drink")!
-                        let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
-                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceFromCameraToDrink, placeName: placeName, reviewLocation: drinkLocation, tempIndex: tempIndex, image:drinkImage)
-                        self.reviewArray.append(reviewData as Review)
-                        let marker = PlaceMarker(review: reviewData)
-                        marker.map = self.mapView
+                        println("error: no photo file")
                     }
                     
                 }
             } else {
                 println("error")
             }
-            self.reviewArray.sort({$0.drinkDistance > $1.drinkDistance})
-            self.searchDisplayController?.searchResultsTableView.reloadData()
-            self.tempIndexRow = self.reviewArray.count + 1
-            for review in self.reviewArray {
-                review.tempIndex = NSIndexPath(forRow: self.tempIndexRow, inSection: 0)
-                self.tempIndexRow = self.tempIndexRow - 1
-            }
+
         }
     }
     
