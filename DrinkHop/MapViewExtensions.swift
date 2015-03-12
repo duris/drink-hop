@@ -44,7 +44,21 @@ extension MapViewController: UITableViewDelegate
 {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        //self.locationTable.hidden = true
+        
+        let place_id = self.autoPlacesArray[indexPath.row].place_id
+        self.dataProvider.fetchPlaceDetails(place_id){
+            places in
+
+            for object in places {
+                let place:PlaceDetails! = object as PlaceDetails
+                self.mapSearchController.searchBar.resignFirstResponder()
+                self.mapView.camera = GMSCameraPosition(target: object.coordinate, zoom: 12, bearing: 0, viewingAngle: 0)
+                self.mapSearchController.searchBar.text = ""
+                self.mapSearchController.searchBar.placeholder = "Nice!"
+                self.locationTable.hidden = true
+
+            }
+        }
     }
 }
 
@@ -64,6 +78,7 @@ extension MapViewController: UISearchResultsUpdating
                     let place:GoogleAutoPlace! = object as GoogleAutoPlace
                     self.autoPlacesArray.append(place)
                     println(place.description)
+                    println(place.place_id)
                 }
                 self.locationTable.reloadData()
                 self.mapSearchController.searchDisplayController?.searchResultsTableView.reloadData()

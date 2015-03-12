@@ -13,9 +13,11 @@ import CoreLocation
 class GoogleAutoPlace {
     
     let description: String
-
+    let place_id: String
+    
     init(dictionary:NSDictionary)
     {
         description = dictionary["description"] as String
+        place_id = dictionary["place_id"] as String
     }
 }

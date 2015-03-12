@@ -97,12 +97,8 @@ class GoogleDataProvider {
                     for rawPlace:AnyObject in results {
                         let place = GoogleAutoPlace(dictionary: rawPlace as NSDictionary)
                         placesArray.append(place)
-                        println(self.autoArray.count)
                     }
-                }
-                
-          
-                
+                }     
             }
             dispatch_async(dispatch_get_main_queue()) {
                 completion(placesArray)
@@ -111,6 +107,39 @@ class GoogleDataProvider {
         placesTask.resume()
     }
     
+    
+    
+    
+    func fetchPlaceDetails(placeId:String, completion: (([PlaceDetails]) -> Void)) -> ()
+    {
+        var urlString = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(placeId)&key=\(apiKey)"
+        
+        urlString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        if placesTask.taskIdentifier > 0 && placesTask.state == .Running {
+            placesTask.cancel()
+        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        placesTask = session.dataTaskWithURL(NSURL(string: urlString)!) {data, response, error in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            var placesArray = [PlaceDetails]()
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? NSDictionary {
+                //println(json)
+                if let result = json["result"] as? NSDictionary {
+                    let place = PlaceDetails(dictionary: result as NSDictionary)
+                    placesArray.append(place)
+                   
+       
+                }
+                
+                
+                
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(placesArray)
+            }
+        }
+        placesTask.resume()
+    }
     
     
     
