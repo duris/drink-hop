@@ -60,6 +60,7 @@
 		0DD726FE1A98EAE50036D2E9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726FD1A98EAE50036D2E9 /* Accounts.framework */; };
 		0DD727001A98EAE90036D2E9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD726FF1A98EAE90036D2E9 /* Social.framework */; };
 		0DD727021A98EB460036D2E9 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DD727011A98EB460036D2E9 /* libstdc++.6.dylib */; };
+		0DDBFCCC1AB2234D00789645 /* GoogleAutoPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBFCCB1AB2234D00789645 /* GoogleAutoPlace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		0DD726FD1A98EAE50036D2E9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0DD726FF1A98EAE90036D2E9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0DD727011A98EB460036D2E9 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		0DDBFCCB1AB2234D00789645 /* GoogleAutoPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAutoPlace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 			children = (
 				0D7426AF1A97E39600BFEBA3 /* GoogleDataProvider.swift */,
 				0D7426AD1A97E37200BFEBA3 /* GooglePlace.swift */,
+				0DDBFCCB1AB2234D00789645 /* GoogleAutoPlace.swift */,
 			);
 			name = GoogleData;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				0D76F83F1A9935DF00E0DC3D /* ReviewViewController.swift in Sources */,
 				0D7426AE1A97E37200BFEBA3 /* GooglePlace.swift in Sources */,
 				0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */,
+				0DDBFCCC1AB2234D00789645 /* GoogleAutoPlace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

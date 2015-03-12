@@ -30,6 +30,7 @@ class GoogleDataProvider {
     }
     let blockedPlaced = ["The Hornet's Nest", "McDonald's","Subway" ,"Wendy's", "KFC","Taco Bell","Tim Hortons", "Thurman To Go", "Domino's Pizza"]
     var seePlacesArray = [GooglePlace]()
+    var autoArray = [GoogleAutoPlace]()
 
     
     func fetchPlacesNearCoordinate(coordinate: CLLocationCoordinate2D, types:[String], keyword:String, completion: (([GooglePlace]) -> Void)) -> ()
@@ -76,8 +77,39 @@ class GoogleDataProvider {
         }
         placesTask.resume()
     }
-
     
+
+
+    func fetchAutoPlaces(keyword:String, completion: (([GoogleAutoPlace]) -> Void)) -> ()
+    {
+         var urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=\(apiKey)&input=\(keyword)&types=(cities)"
+        
+        urlString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        if placesTask.taskIdentifier > 0 && placesTask.state == .Running {
+            placesTask.cancel()
+        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        placesTask = session.dataTaskWithURL(NSURL(string: urlString)!) {data, response, error in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            var placesArray = [GoogleAutoPlace]()
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? NSDictionary {
+                if let results = json["predictions"] as? NSArray {
+                    for rawPlace:AnyObject in results {
+                        let place = GoogleAutoPlace(dictionary: rawPlace as NSDictionary)
+                        placesArray.append(place)
+                        println(self.autoArray.count)
+                    }
+                }
+                
+          
+                
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(placesArray)
+            }
+        }
+        placesTask.resume()
+    }
     
     
     

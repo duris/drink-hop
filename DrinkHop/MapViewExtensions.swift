@@ -13,13 +13,14 @@ extension MapViewController: UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if (self.mapSearchController.active)
-        {
-            return 1
-        } else
-        {
+        
+        if (self.mapSearchController.active) {
+            return autoPlacesArray.count
+        }else{
             return 1
         }
+        
+       
     }
     
     
@@ -27,8 +28,13 @@ extension MapViewController: UITableViewDataSource
     {
         var cell = self.locationTable.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
         
-        cell.textLabel?.text = "hello"
-   
+        
+        if (self.mapSearchController.active) {
+            cell.textLabel?.text = self.autoPlacesArray[indexPath.row].description
+        }else{
+          
+        }
+       
         return cell
     }    
 
@@ -38,7 +44,7 @@ extension MapViewController: UITableViewDelegate
 {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        self.locationTable.hidden = true
+        //self.locationTable.hidden = true
     }
 }
 
@@ -47,8 +53,22 @@ extension MapViewController: UISearchResultsUpdating
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
         if (self.mapSearchController.active) {
+            self.autoPlacesArray.removeAll(keepCapacity: false)
+            println("active")
             self.locationTable.hidden = false
+            let searchText = self.mapSearchController.searchBar.text
+            self.dataProvider.fetchAutoPlaces(searchText){
+                places in
+                
+                for object: AnyObject in places {
+                    let place:GoogleAutoPlace! = object as GoogleAutoPlace
+                    self.autoPlacesArray.append(place)
+                    println(place.description)
+                }
+                self.locationTable.reloadData()
+                self.mapSearchController.searchDisplayController?.searchResultsTableView.reloadData()
         }
+        
     }
-    
+  }
 }

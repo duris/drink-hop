@@ -26,6 +26,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     var mapSearchController = UISearchController()
     var tempIndexRow = 0
     var selectedIndex = NSIndexPath(forRow: 0, inSection: 0)
+    var searchedTypes = ["bar", "restaurant"]
+    var autoPlacesArray = [GoogleAutoPlace]()
     
 
     override func viewDidLoad() {
@@ -34,11 +36,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        self.locationTable.delegate = self
+        self.locationTable.dataSource = self
         
         
         self.mapSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
-            //controller.searchResultsUpdater = self
+            controller.searchResultsUpdater = self
             controller.hidesNavigationBarDuringPresentation = false
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.placeholder = "Location"
