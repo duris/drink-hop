@@ -22,7 +22,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     var targetLocationArray = [CLLocationCoordinate2D]()
     var locationArray = [AnyObject]()
     var reviewArray = [Review]()
-    var drinkDistances = [Double]()
     var distanceToReview = [Double]()
     var mapSearchController = UISearchController()
     var tempIndexRow = 0
@@ -89,7 +88,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.targetLocationArray.removeAll(keepCapacity: false)
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
-
         loadDrinks(targetLocationArray.first!)
     }
     
@@ -166,28 +164,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     }
     
     func calDistance(placeLocation:CLLocation){
-        self.drinkDistances.removeAll(keepCapacity: false)
         self.distanceToReview.removeAll(keepCapacity: false)
-        //let location: AnyObject! = self.locationArray.first as AnyObject!
         
-        var cameraCoordinate: CLLocation = CLLocation(latitude: self.mapView.camera.target.latitude, longitude: self.mapView.camera.target.longitude)
-       
-        var currentLocation: CLLocation = CLLocation(latitude: self.coordinates.latitude, longitude: self.coordinates.longitude)
-        
-        var distanceBetweenCameraLocation: CLLocationDistance =
-        cameraCoordinate.distanceFromLocation(placeLocation as CLLocation)
-        
+        var currentLocation: CLLocation = CLLocation(latitude: self.mapView.myLocation.coordinate.latitude, longitude: self.mapView.myLocation.coordinate.longitude)
         
         var distanceBetweenCurrentLocation: CLLocationDistance =
         currentLocation.distanceFromLocation(placeLocation as CLLocation)
-        
         let longMiles = distanceBetweenCurrentLocation*0.000621371192
-        
-        let miles = String(format:"%.1f", longMiles)
-        let mileToDrink = String(format:"%.1f", longMiles)
-        
-        self.drinkDistances.append(longMiles)
-        self.distanceToReview.append(distanceBetweenCurrentLocation)
+        self.distanceToReview.append(longMiles)
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {

@@ -116,15 +116,8 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                     let drink:PFObject! = object as PFObject
         
                     let location = drink.objectForKey("location") as PFGeoPoint!
-   
                     var drinkLocation: CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-           
-
                     self.calDistanceToMyLocation(drinkLocation)
-                    //self.calDistanceToMapCamera(drinkLocation)
-                    
-                    
-                    
                     let distanceToDrink = self.myDistanceToDrink.first!
                     let drinkName = drink.objectForKey("drinkName") as String!
                     let placeName = drink.objectForKey("placeName") as String!
@@ -135,7 +128,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                             if (error == nil) {
                                 let image = UIImage(data:data)!
                                 let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
-                                
                                 
                                 self.drinksArray.append(reviewData as Review)
                                 self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
@@ -158,14 +150,9 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             } else {
                 println("error")
             }
-            
-            
-            
-            
-            
         }
-
     }
+    
     
     override func viewWillDisappear(animated: Bool) {
         self.mainSearchController.searchBar.hidden = true
@@ -178,7 +165,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         println(currentLocation.coordinate.latitude)
         println(currentLocation.coordinate.longitude)
         self.myLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-       // self.reverseGeocodeCoordinate(self.myLocation)
         self.locationManager.stopUpdatingLocation()
         
     }
@@ -274,6 +260,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     @IBAction func shootPhoto(sender: UIBarButtonItem) {
         picker.allowsEditing = false
         picker.sourceType = UIImagePickerControllerSourceType.Camera
+        picker.modalPresentationStyle = .Popover
         picker.cameraCaptureMode = .Photo
         presentViewController(picker, animated: true, completion: nil)
         hideOverlay()

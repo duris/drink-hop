@@ -55,8 +55,6 @@ class ReviewViewController: UIViewController {
             var review = PFObject(className:"Review")
             review["placeName"] = place.name
             review["placeId"] = place.placeId
-            review["lat"] = place.coordinate.latitude
-            review["lon"] = place.coordinate.longitude
             let imageData:NSData = UIImageJPEGRepresentation(self.photoImageView.image, 0.9)
             let imageFile:PFFile = PFFile(data: imageData)
             review["photo"] = imageFile
@@ -80,7 +78,10 @@ class ReviewViewController: UIViewController {
                     // There was a problem, check error.description
                 }
             }
+            
             self.navigationController?.popToRootViewControllerAnimated(false)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
             
         }
     }
