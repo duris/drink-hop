@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Foundation
 
-class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var cameraButton:UIButton!
     @IBOutlet weak var libraryButton:UIButton!
@@ -30,6 +30,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     var targetLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
     var 🍕 = 0.0
     
+    var filteredReviewsArray = [Review]()
     
     
     override func viewDidLoad() {
@@ -55,13 +56,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             controller.hidesNavigationBarDuringPresentation = false
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.placeholder = "Drinks"
-            controller.searchBar.autocorrectionType = UITextAutocorrectionType.Yes
+            controller.searchBar.autocorrectionType = UITextAutocorrectionType.No
             //self.drinkTable.tableHeaderView = controller.searchBar
             let frame = CGRect(x: 0, y: 0, width: 240, height: 48)
             let titleView = UIView(frame: frame)
             controller.searchBar.backgroundImage = UIImage()
             controller.searchBar.frame = frame
-            controller.searchBar.sizeToFit()
+            controller.searchBar.delegate = self
+            //controller.searchBar.sizeToFit()
             titleView.addSubview(controller.searchBar)
             self.navigationItem.titleView = titleView
             return controller
@@ -71,9 +73,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     override func viewWillAppear(animated: Bool) {
         self.mainSearchController.searchBar.hidden = false
         self.drinkTable.reloadData()
-//        if self.selectedIndex != NSIndexPath(forRow: 0, inSection: 0) {
-//            self.drinkTable.scrollToRowAtIndexPath(self.selectedIndex, atScrollPosition: UITableViewScrollPosition.None, animated: false)
-//        }
     }
     
     @IBAction func refreshTable(){
@@ -96,6 +95,9 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    //Create func loadFilteredDrinks()
     
     
     func loadDrinks(){
@@ -152,6 +154,65 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             }
         }
     }
+    
+    func loadFilteredDrinks(searchText:String){
+        self.filteredReviewsArray.removeAll(keepCapacity: false)
+        var query : PFQuery = PFQuery(className: "Review")
+        query.limit = 50
+        var userGeoPoint : PFGeoPoint = PFGeoPoint()
+        if self.targetLocation.latitude != 0.00{
+            userGeoPoint = PFGeoPoint(latitude: self.targetLocation.latitude, longitude: self.targetLocation.longitude)
+        }else{
+            userGeoPoint = PFGeoPoint(latitude: self.myLocation.latitude, longitude: self.myLocation.longitude)
+        }
+        query.whereKey("location", nearGeoPoint: userGeoPoint, withinMiles: 20)
+        query.whereKey("drinkName", containsString: searchText)
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects{
+                    let drink:PFObject! = object as PFObject
+                    
+                    let location = drink.objectForKey("location") as PFGeoPoint!
+                    var drinkLocation: CLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                    self.calDistanceToMyLocation(drinkLocation)
+                    let distanceToDrink = self.myDistanceToDrink.first!
+                    let drinkName = drink.objectForKey("drinkName") as String!
+                    let placeName = drink.objectForKey("placeName") as String!
+                    let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
+                    if let imageData = drink.objectForKey("photo") as PFFile! {
+                        imageData.getDataInBackgroundWithBlock({
+                            (data: NSData!, error: NSError!) -> Void in
+                            if (error == nil) {
+                                let image = UIImage(data:data)!
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                                
+                                self.filteredReviewsArray.append(reviewData as Review)
+                                self.filteredReviewsArray.sort({$0.drinkDistance > $1.drinkDistance})
+                                self.drinkTable.reloadData()
+                            }
+                            
+                        })//getDataInBackgroundWithBlock - end
+                    }else {
+                        let image = UIImage(named: "drink")!
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                        
+                        
+                        self.filteredReviewsArray.append(reviewData as Review)
+                        //self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
+                        
+                        self.drinkTable.reloadData()
+                        self.mainSearchController.searchDisplayController?.searchResultsTableView.reloadData()
+                    }
+                    
+                }
+                
+            } else {
+                println("error")
+            }
+        }
+    }
+
     
     
     override func viewWillDisappear(animated: Bool) {
@@ -312,6 +373,12 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.mainSearchController.searchBar.resignFirstResponder()
     }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.mainSearchController.searchBar.resignFirstResponder()
+        self.mainSearchController.searchBar.text=""
+    }
+
     
     
 }
