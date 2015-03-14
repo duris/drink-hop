@@ -17,7 +17,7 @@ extension MapViewController: UITableViewDataSource
         if (self.mapSearchController.active) {
             return autoPlacesArray.count
         }else{
-            return 1
+            return 0
         }
         
        
@@ -46,6 +46,7 @@ extension MapViewController: UITableViewDelegate
     {
         
         let place_id = self.autoPlacesArray[indexPath.row].place_id
+        let placeName = self.autoPlacesArray[indexPath.row].description
         self.dataProvider.fetchPlaceDetails(place_id){
             places in
 
@@ -53,9 +54,11 @@ extension MapViewController: UITableViewDelegate
                 let place:PlaceDetails! = object as PlaceDetails
                 self.mapSearchController.searchBar.resignFirstResponder()
                 self.mapView.camera = GMSCameraPosition(target: object.coordinate, zoom: 12, bearing: 0, viewingAngle: 0)
+                self.loadDrinks(object.coordinate)
                 self.mapSearchController.searchBar.text = ""
-                self.mapSearchController.searchBar.placeholder = "Nice!"
+                self.mapSearchController.searchBar.placeholder = placeName
                 self.locationTable.hidden = true
+                self.mapSearchController.searchBar.showsCancelButton = false
 
             }
         }

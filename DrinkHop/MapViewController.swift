@@ -44,8 +44,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
             controller.hidesNavigationBarDuringPresentation = false
-            controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.placeholder = "Location"
+            controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.autocorrectionType = UITextAutocorrectionType.Yes
             let frame = CGRect(x: 0, y: 0, width: 240, height: 48)
             let titleView = UIView(frame: frame)
@@ -53,6 +53,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
             controller.searchBar.frame = frame
             controller.searchBar.delegate = self
             controller.searchBar.sizeToFit()
+            controller.searchBar.showsCancelButton = false
             titleView.addSubview(controller.searchBar)
             self.navigationItem.titleView = titleView
             return controller
@@ -90,6 +91,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
         self.mapView.clear()
         
         self.targetLocationArray.removeAll(keepCapacity: false)
+        self.reviewArray.removeAll(keepCapacity: false)
         let target = CLLocationCoordinate2DMake(mapView.camera.target.latitude, mapView.camera.target.longitude)
         self.targetLocationArray.append(target)
         loadDrinks(targetLocationArray.first!)
@@ -108,6 +110,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     func loadDrinks(coordinate: CLLocationCoordinate2D){
         self.reviewArray.removeAll(keepCapacity: false)
+        self.mapView.clear()
         var query : PFQuery = PFQuery(className: "Review")
         query.limit = 50
         var userGeoPoint :PFGeoPoint = PFGeoPoint(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
@@ -147,7 +150,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                                 
                                 self.reviewArray.sort({$0.drinkDistance > $1.drinkDistance})
                                 self.searchDisplayController?.searchResultsTableView.reloadData()
-                                self.tempIndexRow = self.reviewArray.count + 1
+                                self.tempIndexRow = self.reviewArray.count
                                 for review in self.reviewArray {
                                     review.tempIndex = NSIndexPath(forRow: self.tempIndexRow, inSection: 0)
                                     self.tempIndexRow = self.tempIndexRow - 1
@@ -217,6 +220,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
         mapView.selectedMarker = nil
+        self.mapSearchController.searchBar.placeholder = "Current Location"
+        loadDrinks(targetLocationArray.first!)
         return false
     }
     

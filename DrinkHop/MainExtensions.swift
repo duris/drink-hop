@@ -53,6 +53,9 @@ extension MainViewController: UITableViewDataSource
                     cell.distanceLabel.text! = miles + " mi"
                     cell.placeNameLabel.text! = "At " + drink.placeName
                     cell.drinkImageView.image = drink.image
+                    //cell.drinkImageView.frame.size.width/2
+                    cell.drinkImageView.layer.cornerRadius =  10
+                    cell.drinkImageView.clipsToBounds = true
                 }else {
                     println("no data")
                 }
@@ -68,6 +71,9 @@ extension MainViewController: UITableViewDataSource
                 cell.distanceLabel.text! = miles + " mi"
                 cell.placeNameLabel.text! = "At " + drink.placeName
                 cell.drinkImageView.image = drink.image
+                //cell.drinkImageView.frame.size.width/2
+                cell.drinkImageView.layer.cornerRadius =  10
+                cell.drinkImageView.clipsToBounds = true
             }else {
                 println("no data")
             }
@@ -96,9 +102,9 @@ extension MainViewController: UISearchResultsUpdating
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
 
-        let length = self.mainSearchController.searchBar.text.utf16Count
-        println(length)
-        self.loadFilteredDrinks(self.mainSearchController.searchBar.text)
+        //let length = self.mainSearchController.searchBar.text.utf16Count
+        //println(length)
+        
         
     }
     

@@ -43,10 +43,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        delay(1){
+        delay(0.1){
         self.loadDrinks()
         }
         
+        
+        
+        
+         self.mainSearchController.searchBar.showsCancelButton = false
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain,
             target: nil, action: nil)
         
@@ -63,6 +67,9 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             controller.searchBar.backgroundImage = UIImage()
             controller.searchBar.frame = frame
             controller.searchBar.delegate = self
+            controller.searchBar.showsCancelButton = false
+        
+            
             //controller.searchBar.sizeToFit()
             titleView.addSubview(controller.searchBar)
             self.navigationItem.titleView = titleView
@@ -266,7 +273,16 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             delay(1){
                 if mapView.selectedIndex != NSIndexPath(forRow: 0, inSection: 0) {
                     self.selectedIndex = mapView.selectedIndex
-                    self.drinkTable.scrollToRowAtIndexPath(mapView.selectedIndex, atScrollPosition: .Middle, animated: true)
+                    let row = self.selectedIndex.row - 2
+                    println(self.selectedIndex.row)
+                    println(self.drinksArray.count)
+                    if self.selectedIndex.row == self.drinksArray.count {
+                        let path = NSIndexPath(forRow: self.selectedIndex.row - 1, inSection: 0)
+                        self.drinkTable.scrollToRowAtIndexPath(path, atScrollPosition: .Bottom, animated: true)
+                    }else{
+                        self.drinkTable.scrollToRowAtIndexPath(self.selectedIndex, atScrollPosition: .Bottom, animated: true)
+                    }
+                    
                 }
             }
         }
@@ -291,7 +307,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             }
             
             if drinksArray.count != 0 {
-                vc.tempIndexRow = vc.reviewArray.count + 1
+                vc.tempIndexRow = vc.reviewArray.count 
                 for review in drinksArray {
                     vc.tempIndexRow = vc.tempIndexRow + 1
                     vc.reviewArray.append(review)
@@ -378,7 +394,18 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         self.mainSearchController.searchBar.resignFirstResponder()
         self.mainSearchController.searchBar.text=""
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        let searchText = self.mainSearchController.searchBar.text
+        self.mainSearchController.searchBar.showsCancelButton = false
+        self.loadFilteredDrinks(self.mainSearchController.searchBar.text)
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.mainSearchController.searchBar.showsCancelButton = false
+    }
 
+    
     
     
 }
