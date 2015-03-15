@@ -221,7 +221,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
         mapView.selectedMarker = nil
         self.mapSearchController.searchBar.placeholder = "Current Location"
-        loadDrinks(targetLocationArray.first!)
+        delay(0.2){
+            self.loadDrinks(self.mapView.camera.target)
+        }
         return false
     }
     

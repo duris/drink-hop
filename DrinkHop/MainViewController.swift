@@ -307,7 +307,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
             }
             
             if drinksArray.count != 0 {
-                vc.tempIndexRow = vc.reviewArray.count 
+                vc.tempIndexRow = vc.reviewArray.count
                 for review in drinksArray {
                     vc.tempIndexRow = vc.tempIndexRow + 1
                     vc.reviewArray.append(review)
