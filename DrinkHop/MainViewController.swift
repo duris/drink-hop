@@ -382,9 +382,13 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
         }
     }
     
-    @IBAction func cancelReview(segue:UIStoryboardSegue){
-        
+    @IBAction func closeProfile(segue:UIStoryboardSegue){
+        if segue.identifier == "closeProfile" {
+            
+            
+        }
     }
+
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         self.mainSearchController.searchBar.resignFirstResponder()
@@ -404,8 +408,19 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.mainSearchController.searchBar.showsCancelButton = false
     }
-
     
+    @IBAction func openProfile(){
+        if PFUser.currentUser() == nil{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navCon = storyboard.instantiateViewControllerWithIdentifier("signIn") as UINavigationController
+            self.presentViewController(navCon, animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navCon = storyboard.instantiateViewControllerWithIdentifier("profile") as UINavigationController
+            self.presentViewController(navCon, animated: true, completion: nil)
+        }
+    }
+   
     
     
 }

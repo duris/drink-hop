@@ -38,10 +38,14 @@
 		0D76F8781A9A989700E0DC3D /* MainExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8771A9A989700E0DC3D /* MainExtensions.swift */; };
 		0D76F87A1A9AA87A00E0DC3D /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F8791A9AA87A00E0DC3D /* Review.swift */; };
 		0D76F87C1A9AB6F400E0DC3D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */; };
+		0D794F761ABB3A42009FBEBD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */; };
+		0D794F781ABC61AA009FBEBD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D794F771ABC61AA009FBEBD /* SignInViewController.swift */; };
 		0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */; };
 		0D7DEA2A1A9B798000E64612 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA291A9B798000E64612 /* PlaceMarker.swift */; };
 		0D7DEA2F1AA6F40C00E64612 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */; };
 		0D9B213D1AB23F5500036BBC /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B213C1AB23F5500036BBC /* PlaceDetails.swift */; };
+		0D9B21401AB7264F00036BBC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B213F1AB7264F00036BBC /* DetailViewController.swift */; };
+		0D9B21431AB7314100036BBC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B21421AB7314100036BBC /* ProfileViewController.swift */; };
 		0DA0F9D81AA7D13C00360233 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */; };
 		0DA0F9DA1AA7D22B00360233 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0F9D91AA7D22B00360233 /* MarkerInfoView.swift */; };
 		0DA0F9DC1AA7D2A000360233 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */; };
@@ -110,10 +114,14 @@
 		0D76F8771A9A989700E0DC3D /* MainExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainExtensions.swift; sourceTree = "<group>"; };
 		0D76F8791A9AA87A00E0DC3D /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0D794F771ABC61AA009FBEBD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0D7DEA291A9B798000E64612 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
 		0D9B213C1AB23F5500036BBC /* PlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
+		0D9B213F1AB7264F00036BBC /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0D9B21421AB7314100036BBC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
 		0DA0F9D91AA7D22B00360233 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
 		0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 				0D7426881A97E23B00BFEBA3 /* AppDelegate.swift */,
 				0DA0F9DB1AA7D2A000360233 /* UIViewExtension.swift */,
 				0D7DEA261A9B6DD800E64612 /* Map */,
+				0D9B21411AB7312B00036BBC /* User */,
 				0D76F8741A9A985000E0DC3D /* Main */,
 				0D76F83D1A9935BC00E0DC3D /* Review */,
 				0D76F8341A991EA800E0DC3D /* DrinkSelect */,
@@ -317,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				0D76F83E1A9935DF00E0DC3D /* ReviewViewController.swift */,
+				0D9B213F1AB7264F00036BBC /* DetailViewController.swift */,
 				0D76F8791A9AA87A00E0DC3D /* Review.swift */,
 			);
 			name = Review;
@@ -349,6 +359,16 @@
 				0DA0F9D71AA7D13C00360233 /* MarkerInfoView.xib */,
 			);
 			name = Marker;
+			sourceTree = "<group>";
+		};
+		0D9B21411AB7312B00036BBC /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0D9B21421AB7314100036BBC /* ProfileViewController.swift */,
+				0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */,
+				0D794F771ABC61AA009FBEBD /* SignInViewController.swift */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +479,9 @@
 				0D76F8381A9931D500E0DC3D /* DrinkSelectViewController.swift in Sources */,
 				0D7DEA2A1A9B798000E64612 /* PlaceMarker.swift in Sources */,
 				0D76F83C1A99331100E0DC3D /* PlaceSelectExtensions.swift in Sources */,
+				0D794F761ABB3A42009FBEBD /* SignUpViewController.swift in Sources */,
+				0D9B21431AB7314100036BBC /* ProfileViewController.swift in Sources */,
+				0D9B21401AB7264F00036BBC /* DetailViewController.swift in Sources */,
 				0D76F8781A9A989700E0DC3D /* MainExtensions.swift in Sources */,
 				0DA0F9DC1AA7D2A000360233 /* UIViewExtension.swift in Sources */,
 				0D7426891A97E23B00BFEBA3 /* AppDelegate.swift in Sources */,
@@ -470,6 +493,7 @@
 				0D7DEA2F1AA6F40C00E64612 /* MapViewExtensions.swift in Sources */,
 				0D76F87C1A9AB6F400E0DC3D /* MainTableViewCell.swift in Sources */,
 				0D76F83F1A9935DF00E0DC3D /* ReviewViewController.swift in Sources */,
+				0D794F781ABC61AA009FBEBD /* SignInViewController.swift in Sources */,
 				0D7426AE1A97E37200BFEBA3 /* GooglePlace.swift in Sources */,
 				0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */,
 				0DDBFCCC1AB2234D00789645 /* GoogleAutoPlace.swift in Sources */,
