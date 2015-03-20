@@ -266,11 +266,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Am-bp-tG4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="6Am-bp-tG4">
                                 <rect key="frame" x="127" y="133" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.8624323779926335" green="0.8624323779926335" blue="0.8624323779926335" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bql-5z-tSQ">
                                 <rect key="frame" x="148" y="89" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rih-AB-Ai9">
+                                <rect key="frame" x="85" y="304" width="204" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -292,6 +299,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="drinkCountLabel" destination="rih-AB-Ai9" id="rMn-5K-QYB"/>
                         <outlet property="usernameLabel" destination="Bql-5z-tSQ" id="QF9-KQ-PGq"/>
                     </connections>
                 </viewController>
@@ -427,12 +435,12 @@
                                     <barButtonItem width="6" style="plain" systemItem="fixedSpace" id="lRL-6M-Gue"/>
                                     <barButtonItem image="mapIcon-1" id="ahM-p2-5zT">
                                         <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <segue destination="8xB-le-n6b" kind="presentation" identifier="openMap" modalTransitionStyle="flipHorizontal" id="DIb-DA-oyX"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Map" id="Rtj-Lx-9YX">
                                         <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="8xB-le-n6b" kind="presentation" identifier="openMap" modalTransitionStyle="flipHorizontal" id="2Gv-3v-AER"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ahJ-MO-iuS"/>
                                     <barButtonItem systemItem="camera" id="JV2-Lo-D83">

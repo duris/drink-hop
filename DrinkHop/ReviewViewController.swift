@@ -52,9 +52,11 @@ class ReviewViewController: UIViewController {
         if segue.identifier == "submitReview" {
             let reviewText = self.thoughtsTextView.text
             let place = placeArray.first! as GooglePlace
+            let user = PFUser.currentUser()
             var review = PFObject(className:"Review")
             review["placeName"] = place.name
             review["placeId"] = place.placeId
+            review["user"] = user
             let imageData:NSData = UIImageJPEGRepresentation(self.photoImageView.image, 0.9)
             let imageFile:PFFile = PFFile(data: imageData)
             review["photo"] = imageFile
@@ -79,9 +81,10 @@ class ReviewViewController: UIViewController {
                 }
             }
             
-            self.navigationController?.popToRootViewControllerAnimated(false)
+
             self.dismissViewControllerAnimated(true, completion: nil)
-            
+            self.navigationController?.popToRootViewControllerAnimated(false)
+    
             
         }
     }
