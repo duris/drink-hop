@@ -14,12 +14,6 @@ extension MainViewController: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-//        if self.drinksArray.count != 0 {
-//            return self.drinksArray.count
-//        } else {
-//            return 0
-//        }
-        
         if (self.mainSearchController.active)
         {
             if (self.mainSearchController.searchBar.text != "" && self.filteredReviewsArray.count == 0){
