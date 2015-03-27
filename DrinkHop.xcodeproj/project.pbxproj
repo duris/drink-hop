@@ -40,6 +40,7 @@
 		0D76F87C1A9AB6F400E0DC3D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */; };
 		0D794F761ABB3A42009FBEBD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */; };
 		0D794F781ABC61AA009FBEBD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D794F771ABC61AA009FBEBD /* SignInViewController.swift */; };
+		0D794F7A1ABDE816009FBEBD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D794F791ABDE816009FBEBD /* SettingsViewController.swift */; };
 		0D7DEA281A9B6FFB00E64612 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */; };
 		0D7DEA2A1A9B798000E64612 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA291A9B798000E64612 /* PlaceMarker.swift */; };
 		0D7DEA2F1AA6F40C00E64612 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */; };
@@ -116,6 +117,7 @@
 		0D76F87B1A9AB6F400E0DC3D /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0D794F771ABC61AA009FBEBD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		0D794F791ABDE816009FBEBD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0D7DEA271A9B6FFB00E64612 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0D7DEA291A9B798000E64612 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		0D7DEA2E1AA6F40C00E64612 /* MapViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				0D9B21421AB7314100036BBC /* ProfileViewController.swift */,
 				0D794F751ABB3A42009FBEBD /* SignUpViewController.swift */,
 				0D794F771ABC61AA009FBEBD /* SignInViewController.swift */,
+				0D794F791ABDE816009FBEBD /* SettingsViewController.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				0D76F83C1A99331100E0DC3D /* PlaceSelectExtensions.swift in Sources */,
 				0D794F761ABB3A42009FBEBD /* SignUpViewController.swift in Sources */,
 				0D9B21431AB7314100036BBC /* ProfileViewController.swift in Sources */,
+				0D794F7A1ABDE816009FBEBD /* SettingsViewController.swift in Sources */,
 				0D9B21401AB7264F00036BBC /* DetailViewController.swift in Sources */,
 				0D76F8781A9A989700E0DC3D /* MainExtensions.swift in Sources */,
 				0DA0F9DC1AA7D2A000360233 /* UIViewExtension.swift in Sources */,

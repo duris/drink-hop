@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel:UILabel!
     @IBOutlet weak var drinkCountLabel:UILabel!
+    @IBOutlet weak var userImageView:UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,12 @@ class ProfileViewController: UIViewController {
                 println("error loading data")
             }
         }
-    
+        
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.size.width/2
+        self.userImageView.clipsToBounds = true
+        
+      //  cell.drinkImageView.layer.cornerRadius =  10
+      //  cell.drinkImageView.clipsToBounds = true
     
     }
 
