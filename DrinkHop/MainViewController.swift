@@ -3,7 +3,7 @@
 //  DrinkHop
 //
 //  Created by Ross Duris on 2/22/15.
-//  Copyright (c) 2015 Pear Soda LLC. All rights reserved.
+//  Copyright (c) 2015 duris.io. All rights reserved.
 //
 
 import UIKit
@@ -29,6 +29,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     var myLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
     var targetLocation:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.00, longitude: -0.00)
     var 🍕 = 0.0
+    var selectedCell = NSIndexPath(forRow: 0, inSection: 0)
     
     var filteredReviewsArray = [Review]()
     
@@ -130,13 +131,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                     let distanceToDrink = self.myDistanceToDrink.first!
                     let drinkName = drink.objectForKey("drinkName") as String!
                     let placeName = drink.objectForKey("placeName") as String!
+                    let user = drink.objectForKey("user") as PFUser!
                     let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
                     if let imageData = drink.objectForKey("photo") as PFFile! {
                         imageData.getDataInBackgroundWithBlock({
                             (data: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
                                 let image = UIImage(data:data)!
-                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image, user:user)
                                 
                                 self.drinksArray.append(reviewData as Review)
                                 self.drinksArray.sort({$0.drinkDistance > $1.drinkDistance})
@@ -146,7 +148,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                         })//getDataInBackgroundWithBlock - end
                     }else {
                         let image = UIImage(named: "drink")!
-                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image, user:user)
                         
                         
                         self.drinksArray.append(reviewData as Review)
@@ -186,13 +188,14 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                     let distanceToDrink = self.myDistanceToDrink.first!
                     let drinkName = drink.objectForKey("drinkName") as String!
                     let placeName = drink.objectForKey("placeName") as String!
+                    let user = drink.objectForKey("user") as PFUser!
                     let tempIndex = NSIndexPath(forRow: 1, inSection: 0)
                     if let imageData = drink.objectForKey("photo") as PFFile! {
                         imageData.getDataInBackgroundWithBlock({
                             (data: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
                                 let image = UIImage(data:data)!
-                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image, user:user)
                                 
                                 self.filteredReviewsArray.append(reviewData as Review)
                                 self.filteredReviewsArray.sort({$0.drinkDistance > $1.drinkDistance})
@@ -202,7 +205,7 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                         })//getDataInBackgroundWithBlock - end
                     }else {
                         let image = UIImage(named: "drink")!
-                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                        let reviewData:Review = Review(drinkName: drinkName, drinkDistance: 0.00, placeName: placeName, location: location,tempIndex:tempIndex, image:image, user:user)
                         
                         
                         self.filteredReviewsArray.append(reviewData as Review)
@@ -292,8 +295,6 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openMap" {
-            
-
             let navCon = segue.destinationViewController as UINavigationController
             let vc = navCon.topViewController as MapViewController
 
@@ -314,6 +315,16 @@ class MainViewController: UIViewController,CLLocationManagerDelegate,UIImagePick
                     review.tempIndex = NSIndexPath(forRow: vc.tempIndexRow, inSection: 0)
                 }
             }
+        }
+        if segue.identifier == "viewDetails" {
+            let vc = segue.destinationViewController as DetailViewController
+           // let vc = navCon.topViewController as DetailViewController
+            
+            let indexPath = self.drinkTable.indexPathForSelectedRow()!
+
+            let review = drinksArray[indexPath.row] as Review!
+            vc.review = review
+            
         }
     }
     

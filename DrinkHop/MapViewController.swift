@@ -135,14 +135,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, CLLocationManager
                     let distanceToDrink = self.distanceToReview.first!
                     let drinkName = review.objectForKey("drinkName") as String!
                     let placeName = review.objectForKey("placeName") as String!
-
+                    let user = review.objectForKey("user") as PFUser!
                     if let imageFile = review.objectForKey("photo") as PFFile! {
                         imageFile.getDataInBackgroundWithBlock({
                             (imageData: NSData!, error: NSError!) -> Void in
                             if (error == nil) {
                                 let image = UIImage(data:imageData)!
                                 let tempIndex = NSIndexPath(forRow: 0, inSection: 0)
-                                   let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image)
+                                let reviewData:Review = Review(drinkName: drinkName, drinkDistance: distanceToDrink, placeName: placeName, location: location,tempIndex:tempIndex, image:image, user:user)
                                 self.reviewArray.append(reviewData as Review)
                                 let marker = PlaceMarker(review: reviewData)
                                 marker.map = self.mapView
