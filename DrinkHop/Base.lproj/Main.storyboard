@@ -328,12 +328,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="SVm-7g-XVc">
-                        <barButtonItem key="leftBarButtonItem" image="glass" id="4HA-sy-87H">
-                            <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="Pej-S3-Ge4" kind="unwind" unwindAction="closeProfile:" id="kZO-nS-fpH"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="Hzy-D6-Q5B">
                             <color key="tintColor" red="0.2197953751" green="0.69004645419999999" blue="0.99786343229999996" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -348,7 +342,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XME-KC-It1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Pej-S3-Ge4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2214.5" y="-800.5"/>
         </scene>
@@ -386,7 +379,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="242" id="AE5-kG-PYo" customClass="MainTableViewCell" customModule="DrinkHop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="242" id="AE5-kG-PYo" customClass="MainTableViewCell" customModule="DrinkHop" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AE5-kG-PYo" id="JT0-16-CXv">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -573,20 +566,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YVn-eX-MtV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YVn-eX-MtV">
                                 <rect key="frame" x="8" y="72" width="359" height="224"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bu-cl-v5R">
-                                <rect key="frame" x="42" y="359" width="233" height="21"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" red="0.21025408609999999" green="0.21025408609999999" blue="0.21025408609999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="WaO-OU-WZw">
                                 <rect key="frame" x="8" y="337" width="25" height="24"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TI-wA-udY">
-                                <rect key="frame" x="8" y="359" width="50" height="22"/>
+                                <rect key="frame" x="8" y="359" width="184" height="22"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                 <color key="textColor" red="0.21025408609999999" green="0.21025408609999999" blue="0.21025408609999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -618,17 +605,14 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXO-lU-v54">
                                 <rect key="frame" x="328" y="297" width="39" height="39"/>
                                 <state key="normal" image="profile"/>
-                                <connections>
-                                    <action selector="viewAuthorProfile:" destination="reA-yJ-wUD" eventType="touchUpInside" id="HNd-lz-eT4"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO2-kK-8iq">
-                                <rect key="frame" x="239" y="331" width="128" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO2-kK-8iq">
+                                <rect key="frame" x="200" y="331" width="167" height="30"/>
                                 <state key="normal" title="Authors Username">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewAuthorProfile:" destination="reA-yJ-wUD" eventType="touchUpInside" id="Klc-hm-s8s"/>
+                                    <segue destination="CKU-8K-VL3" kind="show" identifier="authorProfile" id="TDT-pp-NFw"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="IRs-fJ-yUg">
@@ -637,10 +621,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-kE-YCb">
                                 <rect key="frame" x="60" y="421" width="33" height="33"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pel-uL-iFk">
-                                <rect key="frame" x="273" y="369" width="94" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bu-cl-v5R">
+                                <rect key="frame" x="8" y="389" width="195" height="21"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" red="0.21025408609999999" green="0.21025408609999999" blue="0.21025408609999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -648,7 +632,10 @@
                     </view>
                     <connections>
                         <outlet property="authorUsernameButton" destination="VO2-kK-8iq" id="c4W-X9-51i"/>
-                        <outlet property="userNameLabel" destination="pel-uL-iFk" id="UHE-Vj-srl"/>
+                        <outlet property="drinkDistanceLabel" destination="3TI-wA-udY" id="6zG-WQ-hDF"/>
+                        <outlet property="drinkImageView" destination="YVn-eX-MtV" id="jJu-Cv-ejl"/>
+                        <outlet property="drinkNameLabel" destination="AcZ-If-ylz" id="KyB-Zl-szt"/>
+                        <outlet property="placeNameLabel" destination="5bu-cl-v5R" id="7E8-Tl-Jze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeA-E5-LEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -965,6 +952,7 @@
         <image name="settings" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="TDT-pp-NFw"/>
         <segue reference="dN6-iY-98v"/>
     </inferredMetricsTieBreakers>
 </document>
